@@ -24,6 +24,8 @@ Primary outputs:
 
 - `build/<episode>/manifest.json`
 - `build/<episode>/credits.md`
+- `build/<episode>/voice_cues.md`
+- `build/<episode>/voice_cues.json`
 - `build/<episode>/assets/`
 - `build/<episode>/slides/*.png`
 - `build/<episode>/animatic.mp4`
@@ -42,6 +44,7 @@ Implemented:
 - Noir-doc slide rendering
 - Animatic generation with `ffmpeg`
 - OTIO export
+- Voice cue sheet generation from beat timings + `episodes/<id>.script.md`
 - Coverage reporting with missing-beat notes and suggested queries
 
 Not fully solved:
@@ -53,7 +56,7 @@ Not fully solved:
 ## Install
 
 ```bash
-cd /Users/sky/.openclaw/workspace/warcut
+cd warcut
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
@@ -79,10 +82,22 @@ scw voice episodes/ep01.yaml path/to/vo.wav
 scw publish episodes/ep01.yaml
 ```
 
+Voiceover workflow:
+
+1. `scw build episodes/ep01.yaml --offline`
+2. Read from `build/ep01/voice_cues.md` while watching `build/ep01/animatic.mp4`
+3. Record a WAV
+4. `scw voice episodes/ep01.yaml /absolute/path/to/your_vo.wav`
+
+Current limitation:
+
+- `scw voice` stores the narration path in the manifest
+- it does not auto-retime beats yet
+
 Recommended smoke-test flow:
 
 ```bash
-cd /Users/sky/.openclaw/workspace/warcut
+cd warcut
 PYTHONPATH=src python3 -m scw_builder.cli cache episodes/ep01_smoke.yaml
 PYTHONPATH=src python3 -m scw_builder.cli build episodes/ep01_smoke.yaml --offline
 ```
@@ -91,31 +106,31 @@ PYTHONPATH=src python3 -m scw_builder.cli build episodes/ep01_smoke.yaml --offli
 
 Core files:
 
-- [src/scw_builder/cli.py](/Users/sky/.openclaw/workspace/warcut/src/scw_builder/cli.py)
-- [src/scw_builder/episode_schema.py](/Users/sky/.openclaw/workspace/warcut/src/scw_builder/episode_schema.py)
-- [src/scw_builder/manifest.py](/Users/sky/.openclaw/workspace/warcut/src/scw_builder/manifest.py)
-- [src/scw_builder/plan/planner.py](/Users/sky/.openclaw/workspace/warcut/src/scw_builder/plan/planner.py)
-- [src/scw_builder/render/slides.py](/Users/sky/.openclaw/workspace/warcut/src/scw_builder/render/slides.py)
-- [src/scw_builder/render/animatic.py](/Users/sky/.openclaw/workspace/warcut/src/scw_builder/render/animatic.py)
-- [src/scw_builder/edit/otio_builder.py](/Users/sky/.openclaw/workspace/warcut/src/scw_builder/edit/otio_builder.py)
-- [src/scw_builder/sources/commons.py](/Users/sky/.openclaw/workspace/warcut/src/scw_builder/sources/commons.py)
-- [src/scw_builder/sources/internet_archive.py](/Users/sky/.openclaw/workspace/warcut/src/scw_builder/sources/internet_archive.py)
-- [src/scw_builder/sources/licenses.py](/Users/sky/.openclaw/workspace/warcut/src/scw_builder/sources/licenses.py)
+- [src/scw_builder/cli.py](src/scw_builder/cli.py)
+- [src/scw_builder/episode_schema.py](src/scw_builder/episode_schema.py)
+- [src/scw_builder/manifest.py](src/scw_builder/manifest.py)
+- [src/scw_builder/plan/planner.py](src/scw_builder/plan/planner.py)
+- [src/scw_builder/render/slides.py](src/scw_builder/render/slides.py)
+- [src/scw_builder/render/animatic.py](src/scw_builder/render/animatic.py)
+- [src/scw_builder/edit/otio_builder.py](src/scw_builder/edit/otio_builder.py)
+- [src/scw_builder/sources/commons.py](src/scw_builder/sources/commons.py)
+- [src/scw_builder/sources/internet_archive.py](src/scw_builder/sources/internet_archive.py)
+- [src/scw_builder/sources/licenses.py](src/scw_builder/sources/licenses.py)
 
 Episode examples:
 
-- [episodes/ep01.yaml](/Users/sky/.openclaw/workspace/warcut/episodes/ep01.yaml)
-- [episodes/ep01_smoke.yaml](/Users/sky/.openclaw/workspace/warcut/episodes/ep01_smoke.yaml)
+- [episodes/ep01.yaml](episodes/ep01.yaml)
+- [episodes/ep01_smoke.yaml](episodes/ep01_smoke.yaml)
 
 Renderer templates:
 
-- [templates/lower_thirds.json](/Users/sky/.openclaw/workspace/warcut/templates/lower_thirds.json)
-- [templates/quote_card.json](/Users/sky/.openclaw/workspace/warcut/templates/quote_card.json)
-- [templates/map_frame.json](/Users/sky/.openclaw/workspace/warcut/templates/map_frame.json)
+- [templates/lower_thirds.json](templates/lower_thirds.json)
+- [templates/quote_card.json](templates/quote_card.json)
+- [templates/map_frame.json](templates/map_frame.json)
 
 Static assets:
 
-- [assets_static/brand/map_base.svg](/Users/sky/.openclaw/workspace/warcut/assets_static/brand/map_base.svg)
+- [assets_static/brand/map_base.svg](assets_static/brand/map_base.svg)
 
 ## Episode YAML Contract
 
@@ -316,6 +331,10 @@ Important outputs:
   - metadata-driven attribution
 - `coverage.json`
   - beat-by-beat source coverage, missing beats, notes, suggested queries
+- `voice_cues.md`
+  - human-readable voiceover cue sheet with beat timing and script text
+- `voice_cues.json`
+  - machine-readable cue sheet with beat timing and script text
 - `assets/commons/`
   - fetched Commons media plus adjacent metadata JSON
 - `assets/ia_clips/`
@@ -359,14 +378,14 @@ Current theme:
 
 Renderer rules are in:
 
-- [src/scw_builder/render/slides.py](/Users/sky/.openclaw/workspace/warcut/src/scw_builder/render/slides.py)
+- [src/scw_builder/render/slides.py](src/scw_builder/render/slides.py)
 
 ## Suggested Workflow For Another Model
 
 If another model is asked to help continue this project, the best workflow is:
 
-1. Read [episodes/ep01_smoke.yaml](/Users/sky/.openclaw/workspace/warcut/episodes/ep01_smoke.yaml)
-2. Read [build/ep01_smoke/coverage.json](/Users/sky/.openclaw/workspace/warcut/build/ep01_smoke/coverage.json) if it exists
+1. Read [episodes/ep01_smoke.yaml](episodes/ep01_smoke.yaml)
+2. Read [build/ep01_smoke/coverage.json](build/ep01_smoke/coverage.json) if it exists
 3. Propose either:
    - better `search` queries
    - exact `pinned.commons_titles`
@@ -377,7 +396,7 @@ If another model is asked to help continue this project, the best workflow is:
 
 The smoke episode is the active proving ground:
 
-- [episodes/ep01_smoke.yaml](/Users/sky/.openclaw/workspace/warcut/episodes/ep01_smoke.yaml)
+- [episodes/ep01_smoke.yaml](episodes/ep01_smoke.yaml)
 
 At the time of writing:
 
@@ -386,12 +405,36 @@ At the time of writing:
 - `archival_reel` has a pinned IA identifier
 - live search can still be flaky, so pinned sources are the preferred stabilizer
 
+## Episode 1 Status
+
+Current files:
+
+- [episodes/ep01.yaml](episodes/ep01.yaml)
+- [episodes/ep01.script.md](episodes/ep01.script.md)
+- [episodes/ep01.notes.md](episodes/ep01.notes.md)
+
+Current build review:
+
+- structure and timing are good enough to start voiceover rehearsal
+- major dramatic beats have sourced media
+- map beat is now using a real Spain-like outline instead of floating placeholder blocks
+- weak editorial beats still need better hand-picked sources:
+  - `vignette_andalusia`
+  - `cold_open_montage` could use one stronger image replacement
+  - `pressure_gauge` could use stronger political document/newspaper imagery
+
+Recommended next steps after this checkpoint:
+
+1. Review `build/ep01/animatic.mp4`
+2. Record against `build/ep01/voice_cues.md`
+3. Replace weak source picks before final voice lock
+
 ## Testing
 
 Run:
 
 ```bash
-cd /Users/sky/.openclaw/workspace/warcut
+cd warcut
 python3 -m pytest -q
 ```
 
@@ -408,7 +451,7 @@ Current test coverage includes:
 If you need to hand this to ChatGPT quickly, use:
 
 ```text
-You are helping with the `warcut` repo at /Users/sky/.openclaw/workspace/warcut.
+You are helping with the `warcut` repo.
 
 Do not invent sources.
 When suggesting media, return exact Wikimedia Commons file page titles or exact Internet Archive identifiers.

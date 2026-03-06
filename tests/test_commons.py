@@ -86,6 +86,64 @@ def test_filtering_and_attribution_extraction(tmp_path):
     assert attribution.license_url == "https://creativecommons.org/licenses/by-sa/4.0/"
 
 
+def test_plan_episode_prefers_pinned_commons_without_fallback_spillover(tmp_path):
+    cache_dir = tmp_path / "cache"
+    cache_dir.mkdir(parents=True)
+    for fixture in FIXTURES.glob("commons_*.json"):
+        target_name = fixture.name.replace("commons_", "", 1)
+        (cache_dir / target_name).write_text(
+            fixture.read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+
+    # Inject an unrelated metadata record under the cached title we know exists
+    unrelated_metadata = json.loads(
+        (FIXTURES / "commons_metadata_file-valid-commons-photo-jpg.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    page = unrelated_metadata["query"]["pages"]["101"]
+    page["title"] = "File:Totally Unrelated Orwell Portrait.jpg"
+    (cache_dir / "metadata_file-totally-unrelated-orwell-portrait-jpg.json").write_text(
+        json.dumps(unrelated_metadata),
+        encoding="utf-8",
+    )
+
+    search_data = json.loads(
+        (FIXTURES / "commons_search_barcelona-1936-militia_2.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    search_data["query"]["search"].append(
+        {
+            "title": "File:Totally Unrelated Orwell Portrait.jpg",
+            "pageid": 202,
+        }
+    )
+    (cache_dir / "search_barcelona-1936-militia_3.json").write_text(
+        json.dumps(search_data),
+        encoding="utf-8",
+    )
+
+    build_cache_dir = tmp_path / "build" / "ep01" / "assets" / "_cache" / "commons"
+    build_cache_dir.mkdir(parents=True)
+    for cached in cache_dir.iterdir():
+        (build_cache_dir / cached.name).write_text(cached.read_text(encoding="utf-8"), encoding="utf-8")
+
+    episode = load_episode("episodes/ep01_smoke.yaml")
+    episode.beats = episode.beats[:1]
+    episode.sources.commons.max_assets_per_beat = 3
+    episode.beats[0].pinned = {"commons_titles": ["File:Valid Commons Photo.jpg"]}
+    manifest = plan_episode(
+        episode,
+        tmp_path / "build" / "ep01",
+        offline=True,
+        no_download=True,
+        allow_partial=True,
+    )
+    assert [asset.page_title for asset in manifest.beats[0].assets] == ["File:Valid Commons Photo.jpg"]
+
+
 def test_select_assets_by_title_from_cache(tmp_path):
     cache_dir = tmp_path / "cache"
     cache_dir.mkdir(parents=True)

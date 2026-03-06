@@ -118,10 +118,13 @@ def _render_map_move(manifest, beat, size, templates) -> Image.Image:
     canvas = Image.new("RGB", size, color="#11161d")
     draw = ImageDraw.Draw(canvas, "RGBA")
     template = templates.get("map_frame", {})
+    outline_points = _normalize_polygon(template.get("outline", []))
     regions = template.get("regions", {})
     cities = template.get("cities", {})
 
     draw.rectangle([180, 120, size[0] - 180, size[1] - 180], outline="#293240", width=2)
+    if outline_points:
+        draw.polygon(outline_points, fill=(28, 32, 38, 255), outline="#39414d")
     for name, points in regions.items():
         normalized_points = _normalize_polygon(points)
         if not normalized_points:

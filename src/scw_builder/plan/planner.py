@@ -20,6 +20,7 @@ from scw_builder.sources.internet_archive import (
     select_clip_by_identifier,
     select_clips_for_beat,
 )
+from scw_builder.sources.local import build_local_asset
 from scw_builder.utils.files import unique_preserving_order
 from scw_builder.utils.log import info
 
@@ -62,6 +63,10 @@ def plan_episode(
     for timed in build_timings(episode.beats):
         beat = timed.beat
         suggested_queries = _suggest_queries(beat.keywords, beat.type)
+        local_assets, local_notes = _collect_local_assets(
+            beat.id,
+            beat.pinned.get("local_files", []),
+        )
         commons_assets, sourcing_notes = _collect_commons_assets(
             beat.id,
             _provider_queries(beat.keywords, beat.search, "commons"),
@@ -70,6 +75,7 @@ def plan_episode(
             warm_cache=warm_cache,
             pinned_titles=beat.pinned.get("commons_titles", []),
         )
+        sourcing_notes = local_notes + sourcing_notes
         ia_assets = []
         ia_notes: list[str] = []
         if beat.type in {"archival_clip", "montage"} and episode.sources.enable_internet_archive:
@@ -83,7 +89,7 @@ def plan_episode(
                 pinned_identifiers=beat.pinned.get("ia_identifiers", []),
             )
         sourcing_notes.extend(ia_notes)
-        assets = ia_assets + commons_assets
+        assets = local_assets + ia_assets + commons_assets
         if not assets and _beat_requires_sourced_assets(beat.type) and not allow_partial:
             raise RuntimeError(
                 f"No assets matched beat '{beat.id}'. "
@@ -171,6 +177,8 @@ def _collect_commons_assets(
         assets.append(asset)
         if len(assets) >= options.limit:
             return assets, notes
+    if assets:
+        return assets, notes
     query_limit = options.limit * (3 if warm_cache else 1)
     queries = _expand_queries(
         keywords,
@@ -210,6 +218,22 @@ def _collect_commons_assets(
             break
     if not assets:
         notes.append("commons: no matching assets found")
+    return assets, notes
+
+
+def _collect_local_assets(
+    beat_id: str,
+    pinned_files: list[str],
+) -> tuple[list, list[str]]:
+    assets = []
+    notes: list[str] = []
+    for path_str in pinned_files:
+        local_path = Path(path_str).expanduser()
+        asset = build_local_asset(beat_id, local_path, query_used=path_str)
+        if asset is None:
+            notes.append(f"local pinned file not usable '{path_str}'")
+            continue
+        assets.append(asset)
     return assets, notes
 
 

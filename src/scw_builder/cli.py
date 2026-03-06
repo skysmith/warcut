@@ -17,6 +17,13 @@ from scw_builder.render.slides import render_slides
 from scw_builder.sources.licenses import attribution_lines
 from scw_builder.utils.files import ensure_dir
 from scw_builder.utils.log import info
+from scw_builder.voice_cues import (
+    build_voice_cues,
+    load_script_sections,
+    script_path_for_episode,
+    write_voice_cues_json,
+    write_voice_cues_markdown,
+)
 
 
 def main() -> None:
@@ -107,6 +114,7 @@ def _cmd_build(
     )
     write_manifest(manifest, paths.manifest_path)
     _write_credits(manifest, paths.credits_path)
+    _write_voice_cues(episode_path, manifest, paths)
     render_slides(manifest, paths.slides_dir)
     animatic_path = build_animatic(manifest, paths.slides_dir, paths.animatic_path)
     write_otio_json(manifest, paths.timeline_dir / f"{episode.id}.otio")
@@ -119,6 +127,7 @@ def _cmd_build(
         info(f"animatic: {animatic_path}")
     else:
         info("animatic: skipped (ffmpeg not found)")
+    info(f"voice cues: {paths.voice_cues_md_path}")
     _write_coverage_report(manifest, paths.coverage_path)
     _print_coverage_report(manifest)
 
@@ -175,6 +184,13 @@ def _write_credits(manifest, credits_path: Path) -> None:
             lines.extend(attribution_lines(asset.attribution))
             lines.append("")
     credits_path.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
+
+
+def _write_voice_cues(episode_path: Path, manifest, paths: BuildPaths) -> None:
+    script_sections = load_script_sections(script_path_for_episode(episode_path))
+    cues = build_voice_cues(manifest, script_sections)
+    write_voice_cues_markdown(cues, paths.voice_cues_md_path)
+    write_voice_cues_json(cues, paths.voice_cues_json_path)
 
 
 def _print_coverage_report(manifest) -> None:

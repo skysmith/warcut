@@ -1,6 +1,7 @@
 id: ep01
-title: "spain isn't one country"
+title: "many spains"
 duration_target_sec: 1100
+
 voice:
   mode: voice_only
   narration_wav: null
@@ -13,78 +14,333 @@ style:
   safe_margin_px: 80
   accent_color: "burnt_red"
 
-beats:
-  - id: cold_open
-    type: montage
-    duration_sec: 35
-    keywords:
-      - "Barcelona 1936 militia"
-      - "Catalonia autonomy"
-    must_include: []
-    on_screen_text:
-      - "how did this happen?"
-    caption: "BARCELONA · JUL 1936"
-    motion:
-      style: "kenburns"
-      zoom: [1.02, 1.08]
-      pan: "slow_left"
-    noir:
-      grade: "high_contrast"
-      grain: 0.05
-      vignette: 0.08
-    montage:
-      cuts: 5
-      min_cut_sec: 0.6
-      max_cut_sec: 1.2
-      prefer: ["archival_clip", "doc_scan", "poster"]
-      fallback: ["still"]
-
-  - id: map_move
-    type: map
-    duration_sec: 75
-    keywords:
-      - "Spain regions map Catalonia Basque Andalusia"
-    must_include: []
-    on_screen_text:
-      - "spain: regions first, politics second"
-    caption: "SPAIN · REGIONS"
-    map:
-      base: "assets_static/brand/map_base.svg"
-    highlights: ["catalonia", "basque_country", "andalusia"]
-    arrows:
-      - from: "seville"
-        to: "madrid"
-        label: "reinforcements"
-    labels:
-      - at: "barcelona"
-        text: "barcelona"
-
-  - id: vignette_catalonia
-    type: still
-    duration_sec: 150
-    keywords:
-      - "Catalonia 1930s Barcelona industry unions poster"
-    must_include: []
-    on_screen_text:
-      - "barcelona runs hot"
-    caption: "CATALONIA · INDUSTRY · UNIONS"
-    lower_third:
-      name: "barcelona"
-      subtitle: "industry, unions, autonomy"
-      position: "bottom_left"
-      style: "noir_bar"
-
 sources:
   enable_commons: true
   enable_internet_archive: true
   commons:
-    max_assets_per_beat: 6
-    min_resolution_px: 1400
+    max_assets_per_beat: 4
+    min_resolution_px: 1000
   internet_archive:
-    max_assets_per_beat: 2
-    max_clip_sec: 12
+    max_assets_per_beat: 1
+    max_clip_sec: 10
 
 guardrails:
   require_license_metadata: true
   block_ai_generated_archival: true
   require_source_urls_in_credits: true
+
+beats:
+  - id: cold_open_montage
+    type: montage
+    duration_sec: 40
+    keywords:
+      - "Barcelona 1936 militia"
+      - "Spanish Civil War barricades"
+      - "Madrid 1936 crowds"
+    pinned:
+      commons_titles:
+        - "File:Republican troops during the July 1936 uprising in Barcelona.jpg"
+        - "File:Barcelone 19 juillet 1936.jpg"
+        - "File:Millicians a Barcelona ell 1936.jpg"
+    search:
+      commons:
+        - "Barcelona 1936 militia"
+        - "Spanish Civil War barricades"
+        - "Madrid 1936 crowds"
+      internet_archive:
+        - "Spanish Civil War newsreel"
+        - "Barcelona 1936 street militia footage"
+        - "Madrid 1936 militia footage"
+    on_screen_text:
+      - "how does one country become many?"
+    caption: "SPAIN · JULY 1936"
+    montage:
+      cuts: 6
+      min_cut_sec: 0.6
+      max_cut_sec: 1.1
+      prefer: ["archival_clip", "doc_scan", "poster"]
+      fallback: ["still"]
+    noir:
+      grade: "high_contrast"
+      grain: 0.05
+      vignette: 0.08
+
+  - id: thesis
+    type: still
+    duration_sec: 35
+    keywords:
+      - "map of Spain regions"
+    pinned:
+      local_files:
+        - "assets_static/brand/map_base.svg"
+      commons_titles:
+        - "File:Spanish general elections of 1931, 1933 and 1936.jpg"
+        - "File:Spain, electoral districts 1933-1936.jpg"
+    search:
+      commons:
+        - "map of Spain regions"
+        - "Spain autonomous regions map"
+    on_screen_text:
+      - "this war wasn't one argument."
+      - "it was many."
+    caption: "EPISODE 1"
+
+  - id: map_move_regions
+    type: map_move
+    duration_sec: 90
+    keywords:
+      - "Spain regions map"
+    on_screen_text:
+      - "regions first."
+      - "politics second."
+    caption: "A FRAGILE CENTER"
+    map:
+      base: "assets_static/brand/map_base.svg"
+    highlights:
+      - "catalonia"
+      - "basque_country"
+      - "andalusia"
+      - "castile"
+      - "galicia"
+    labels:
+      - at: "madrid"
+        text: "madrid"
+      - at: "barcelona"
+        text: "barcelona"
+      - at: "bilbao"
+        text: "bilbao"
+      - at: "seville"
+        text: "seville"
+    arrows: []
+    noir:
+      grade: "clean_map"
+      grain: 0.02
+      vignette: 0.04
+
+  - id: vignette_catalonia
+    type: still
+    duration_sec: 120
+    keywords:
+      - "Barcelona 1930s street"
+      - "CNT FAI poster"
+      - "Catalonia factory 1930s"
+    pinned:
+      commons_titles:
+        - "File:LLEGIU Catalunya.jpg"
+        - "File:Milicianas CNT-FAI.png"
+        - "File:CNT-AIT-FAI.jpg"
+    search:
+      commons:
+        - "Barcelona 1930s street"
+        - "CNT FAI poster"
+        - "Catalonia factory 1930s"
+    caption: "CATALONIA"
+    on_screen_text:
+      - "industry + unions + identity"
+    motion:
+      style: "kenburns"
+      zoom: [1.02, 1.08]
+      pan: "slow_left"
+
+  - id: vignette_basque
+    type: still
+    duration_sec: 120
+    keywords:
+      - "Bilbao 1930s"
+      - "Basque nationalist rally"
+    pinned:
+      commons_titles:
+        - "File:Bilbao 20.06.1937.jpg"
+        - "File:Elorza, Rodezno, Oreja, Bilbao 1933.jpg"
+        - "File:Ikurrina.svg"
+    search:
+      commons:
+        - "Bilbao 1930s"
+        - "Basque Country 1930s"
+        - "Basque nationalist rally 1930s"
+    caption: "BASQUE COUNTRY"
+    on_screen_text:
+      - "language + autonomy + church"
+    motion:
+      style: "kenburns"
+      zoom: [1.02, 1.08]
+      pan: "slow_right"
+
+  - id: vignette_andalusia
+    type: still
+    duration_sec: 120
+    keywords:
+      - "Andalusia peasants 1930s"
+      - "Spanish landless laborers"
+    pinned:
+      commons_titles:
+        - "File:1934-02 OBRAS P15.1.jpg"
+        - "File:1934-11 BOLETÍN SOCIEDAD GEOGRÁFICA 02.jpg"
+        - "File:1934-11 BOLETÍN SOCIEDAD GEOGRÁFICA 07.jpg"
+    search:
+      commons:
+        - "Andalusia peasants 1930s"
+        - "Spanish landless laborers 1930s"
+        - "Andalusia rural poverty 1930s"
+    caption: "ANDALUSIA"
+    on_screen_text:
+      - "land + wages + hunger"
+    motion:
+      style: "kenburns"
+      zoom: [1.02, 1.08]
+      pan: "slow_in"
+
+  - id: the_contradiction
+    type: quote_card
+    duration_sec: 90
+    keywords:
+      - "Spanish Second Republic autonomy debate"
+      - "Spanish Second Republic constitution 1931 regional autonomy"
+    search:
+      commons:
+        - "Spanish Second Republic constitution 1931"
+        - "Spanish autonomy debate 1931"
+    quote: "a modern republic... and a country pulling apart."
+    source: "who decides what spain is?"
+    layout: "center_left"
+    accent_word: "spain"
+    noir:
+      grade: "high_contrast"
+      grain: 0.04
+      vignette: 0.06
+
+  - id: pressure_gauge
+    type: doc_scan
+    duration_sec: 120
+    keywords:
+      - "Spanish election posters 1936"
+      - "Spanish newspaper 1936"
+    pinned:
+      commons_titles:
+        - "File:1936 elections, Spain.jpg"
+        - "File:Electoral office, 1936 elections, Spain.jpg"
+        - "File:1936 elections, Barcelona.jpg"
+        - "File:Granada, general elections of 1936.jpg"
+        - "File:Spain, electoral districts 1933-1936.jpg"
+    search:
+      commons:
+        - "Spanish election posters 1936"
+        - "Spanish newspaper 1936 Madrid"
+        - "political rallies Spain 1936"
+    on_screen_text:
+      - "as the center weakens,"
+      - "local power hardens."
+    caption: "1931–1936"
+    motion:
+      style: "kenburns"
+      zoom: [1.00, 1.06]
+      pan: "slow_down"
+
+  - id: coup_as_accelerant
+    type: archival_clip
+    duration_sec: 90
+    keywords:
+      - "Spanish Civil War coup 1936 footage"
+    pinned:
+      ia_identifiers:
+        - "61114-yesterdays-newsreel-the-spanish-civil-war-vwr"
+    search:
+      internet_archive:
+        - "Spanish Civil War 1936 coup newsreel"
+        - "Spanish military uprising 1936 footage"
+        - "Madrid July 1936 footage"
+    on_screen_text:
+      - "the coup turns tension into war."
+    caption: "JULY 1936"
+    noir:
+      grade: "high_contrast"
+      grain: 0.06
+      vignette: 0.10
+
+  - id: mini_case_study_barcelona
+    type: still
+    duration_sec: 115
+    keywords:
+      - "Barcelona July 1936 barricades"
+      - "Barcelona militia patrol"
+    pinned:
+      commons_titles:
+        - "File:Barcelone 19 juillet 1936.jpg"
+        - "File:Republican troops during the July 1936 uprising in Barcelona.jpg"
+        - "File:Millicians a Barcelona ell 1936.jpg"
+    search:
+      commons:
+        - "Barcelona July 1936 barricades"
+        - "Barcelona militia patrol 1936"
+      internet_archive:
+        - "Barcelona 1936 militia footage"
+        - "Barcelona 1936 barricades footage"
+    caption: "BARCELONA"
+    on_screen_text:
+      - "committees. patrols. parallel power."
+    motion:
+      style: "kenburns"
+      zoom: [1.01, 1.05]
+      pan: "slow_left"
+
+  - id: door_slam_multiple_authorities
+    type: archival_clip
+    duration_sec: 80
+    keywords:
+      - "Spanish Civil War militia footage"
+    pinned:
+      ia_identifiers:
+        - "61114-yesterdays-newsreel-the-spanish-civil-war-vwr"
+    search:
+      internet_archive:
+        - "Spanish Civil War 1936 newsreel"
+        - "Barcelona 1936 street militia footage"
+        - "Madrid 1936 militia footage"
+    on_screen_text:
+      - "one country."
+      - "many authorities."
+    caption: "THE STATE SHATTERS"
+    noir:
+      grade: "high_contrast"
+      grain: 0.06
+      vignette: 0.10
+
+  - id: so_what
+    type: still
+    duration_sec: 60
+    keywords:
+      - "map Spain civil war fronts 1936"
+      - "Madrid 1936"
+    pinned:
+      local_files:
+        - "assets_static/brand/map_base.svg"
+      commons_titles:
+        - "File:Map of the Spanish Civil War in September 1936.png"
+        - "File:Spain, electoral districts 1933-1936.jpg"
+    search:
+      commons:
+        - "map Spain civil war fronts 1936"
+        - "Madrid 1936"
+    on_screen_text:
+      - "not one war."
+      - "stacked conflicts."
+    caption: "SO WHAT CHANGED?"
+    motion:
+      style: "kenburns"
+      zoom: [1.00, 1.03]
+      pan: "slow_in"
+
+  - id: hook_ep02_land
+    type: quote_card
+    duration_sec: 40
+    keywords:
+      - "Andalusia land reform 1930s"
+      - "Spanish agrarian conflict 1930s"
+    search:
+      commons:
+        - "Andalusia land reform 1930s"
+        - "Spanish agrarian conflict 1930s"
+    quote: "add land to this equation... and the map becomes a fuse."
+    source: "next: land — the slow-motion bomb"
+    layout: "bottom_left"
+    accent_word: "land"

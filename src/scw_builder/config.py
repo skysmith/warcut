@@ -41,6 +41,14 @@ class BuildPaths:
     def coverage_path(self) -> Path:
         return self.build_dir / "coverage.json"
 
+    @property
+    def voice_cues_md_path(self) -> Path:
+        return self.build_dir / "voice_cues.md"
+
+    @property
+    def voice_cues_json_path(self) -> Path:
+        return self.build_dir / "voice_cues.json"
+
 
 def repo_root_from_episode(episode_path: Path) -> Path:
     return episode_path.resolve().parent.parent
