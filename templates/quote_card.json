@@ -1,0 +1,7 @@
+{
+  "name": "quote_card",
+  "style": "noir_doc",
+  "layout": "center_left",
+  "quote_max_width_ratio": 0.6,
+  "source_offset_px": 48
+}

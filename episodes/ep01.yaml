@@ -1,0 +1,90 @@
+id: ep01
+title: "spain isn't one country"
+duration_target_sec: 1100
+voice:
+  mode: voice_only
+  narration_wav: null
+
+style:
+  theme: "noir_doc"
+  aspect: "16:9"
+  fps: 30
+  font_family: "Inter"
+  safe_margin_px: 80
+  accent_color: "burnt_red"
+
+beats:
+  - id: cold_open
+    type: montage
+    duration_sec: 35
+    keywords:
+      - "Barcelona 1936 militia"
+      - "Catalonia autonomy"
+    must_include: []
+    on_screen_text:
+      - "how did this happen?"
+    caption: "BARCELONA · JUL 1936"
+    motion:
+      style: "kenburns"
+      zoom: [1.02, 1.08]
+      pan: "slow_left"
+    noir:
+      grade: "high_contrast"
+      grain: 0.05
+      vignette: 0.08
+    montage:
+      cuts: 5
+      min_cut_sec: 0.6
+      max_cut_sec: 1.2
+      prefer: ["archival_clip", "doc_scan", "poster"]
+      fallback: ["still"]
+
+  - id: map_move
+    type: map
+    duration_sec: 75
+    keywords:
+      - "Spain regions map Catalonia Basque Andalusia"
+    must_include: []
+    on_screen_text:
+      - "spain: regions first, politics second"
+    caption: "SPAIN · REGIONS"
+    map:
+      base: "assets_static/brand/map_base.svg"
+    highlights: ["catalonia", "basque_country", "andalusia"]
+    arrows:
+      - from: "seville"
+        to: "madrid"
+        label: "reinforcements"
+    labels:
+      - at: "barcelona"
+        text: "barcelona"
+
+  - id: vignette_catalonia
+    type: still
+    duration_sec: 150
+    keywords:
+      - "Catalonia 1930s Barcelona industry unions poster"
+    must_include: []
+    on_screen_text:
+      - "barcelona runs hot"
+    caption: "CATALONIA · INDUSTRY · UNIONS"
+    lower_third:
+      name: "barcelona"
+      subtitle: "industry, unions, autonomy"
+      position: "bottom_left"
+      style: "noir_bar"
+
+sources:
+  enable_commons: true
+  enable_internet_archive: true
+  commons:
+    max_assets_per_beat: 6
+    min_resolution_px: 1400
+  internet_archive:
+    max_assets_per_beat: 2
+    max_clip_sec: 12
+
+guardrails:
+  require_license_metadata: true
+  block_ai_generated_archival: true
+  require_source_urls_in_credits: true

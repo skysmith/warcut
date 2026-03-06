@@ -1,0 +1,19 @@
+{
+  "response": {
+    "docs": [
+      {
+        "identifier": "prelinger-test-reel",
+        "title": "Prelinger Test Reel",
+        "mediatype": "movies",
+        "rights": "Public domain",
+        "licenseurl": "https://creativecommons.org/publicdomain/mark/1.0/"
+      },
+      {
+        "identifier": "restricted-test-reel",
+        "title": "Restricted Test Reel",
+        "mediatype": "movies",
+        "rights": "Copyright restricted"
+      }
+    ]
+  }
+}

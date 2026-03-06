@@ -1,0 +1,140 @@
+id: ep01_smoke
+title: "spain isn't one country (smoke test)"
+duration_target_sec: 90
+voice:
+  mode: voice_only
+  narration_wav: null
+
+style:
+  theme: "noir_doc"
+  aspect: "16:9"
+  fps: 30
+  font_family: "Inter"
+  safe_margin_px: 80
+  accent_color: "burnt_red"
+
+beats:
+  - id: cold_open
+    type: montage
+    duration_sec: 20
+    keywords:
+      - "Barcelona 1936 militia"
+      - "Spain civil war 1936 street scene"
+    must_include: []
+    on_screen_text:
+      - "how did this happen?"
+    caption: "BARCELONA · JUL 1936"
+    motion:
+      style: "kenburns"
+      zoom: [1.02, 1.08]
+      pan: "slow_left"
+    noir:
+      grade: "high_contrast"
+      grain: 0.05
+      vignette: 0.08
+    montage:
+      cuts: 4
+      min_cut_sec: 0.8
+      max_cut_sec: 1.5
+      prefer: ["archival_clip", "doc_scan", "poster"]
+      fallback: ["still"]
+
+  - id: map_move
+    type: map_move
+    duration_sec: 25
+    keywords:
+      - "Spain regions map Catalonia Basque Andalusia"
+    must_include: []
+    on_screen_text:
+      - "spain: regions first, politics second"
+    caption: "SPAIN · REGIONS"
+    map:
+      base: "assets_static/brand/map_base.svg"
+    highlights: ["catalonia", "basque_country", "andalusia"]
+    arrows:
+      - from: "seville"
+        to: "madrid"
+        label: "reinforcements"
+    labels:
+      - at: "barcelona"
+        text: "barcelona"
+
+  - id: archival_reel
+    type: archival_clip
+    duration_sec: 18
+    keywords:
+      - "Spanish Civil War newsreel"
+      - "Spanish Civil War archive footage"
+      - "Spanish Civil War republican militia"
+      - "Spanish Civil War Madrid 1936 newsreel"
+      - "Prelinger war newsreel Spain"
+    search:
+      commons:
+        - "Spanish Civil War newsreel"
+        - "Spanish Civil War archive footage"
+      internet_archive:
+        - "Spanish Civil War newsreel"
+        - "Spanish Civil War archive footage"
+        - "Prelinger war newsreel Spain"
+        - "Spanish Civil War documentary"
+    pinned:
+      ia_identifiers:
+        - "61114-yesterdays-newsreel-the-spanish-civil-war-vwr"
+    must_include: []
+    on_screen_text:
+      - "the war enters the street"
+    caption: "ARCHIVE REEL"
+    noir:
+      grade: "high_contrast"
+      grain: 0.06
+      vignette: 0.09
+
+  - id: vignette_catalonia
+    type: still
+    duration_sec: 27
+    keywords:
+      - "Spanish Civil War CNT poster"
+      - "Spanish Civil War FAI poster"
+      - "Spanish Civil War UGT poster"
+      - "Spanish Republic propaganda poster"
+      - "Barcelona anarchist poster 1936"
+      - "Guerra Civil Espanola cartel CNT"
+      - "cartel republicano Barcelona"
+      - "Spanish Civil War labor poster"
+      - "Barcelona workers poster 1936"
+      - "Catalonia propaganda poster"
+      - "cartell guerra civil barcelona"
+    search:
+      commons:
+        - "Spanish Republic propaganda poster"
+        - "Guerra Civil Espanola cartel"
+        - "cartel republicano Barcelona"
+        - "Barcelona workers poster 1936"
+        - "CNT FAI UGT poster Spain"
+    pinned:
+      commons_titles:
+        - "File:LLEGIU Catalunya.jpg"
+    must_include: []
+    on_screen_text:
+      - "barcelona runs hot"
+    caption: "CATALONIA · INDUSTRY · UNIONS"
+    lower_third:
+      name: "barcelona"
+      subtitle: "industry, unions, autonomy"
+      position: "bottom_left"
+      style: "noir_bar"
+
+sources:
+  enable_commons: true
+  enable_internet_archive: true
+  commons:
+    max_assets_per_beat: 2
+    min_resolution_px: 600
+  internet_archive:
+    max_assets_per_beat: 1
+    max_clip_sec: 8
+
+guardrails:
+  require_license_metadata: true
+  block_ai_generated_archival: true
+  require_source_urls_in_credits: true

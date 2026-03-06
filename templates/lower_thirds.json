@@ -1,0 +1,9 @@
+{
+  "name": "lower_thirds",
+  "style": "noir_bar",
+  "padding_px": 28,
+  "height_px": 124,
+  "name_case": "upper",
+  "subtitle_case": "title",
+  "position": "bottom_left"
+}

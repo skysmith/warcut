@@ -1,0 +1,38 @@
+{
+  "batchcomplete": "",
+  "query": {
+    "pages": {
+      "101": {
+        "pageid": 101,
+        "ns": 6,
+        "title": "File:Valid Commons Photo.jpg",
+        "imageinfo": [
+          {
+            "url": "https://upload.wikimedia.org/example/valid-commons-photo.jpg",
+            "descriptionurl": "https://commons.wikimedia.org/wiki/File:Valid_Commons_Photo.jpg",
+            "mime": "image/jpeg",
+            "width": 1800,
+            "height": 1500,
+            "extmetadata": {
+              "ObjectName": {
+                "value": "Valid Commons Photo"
+              },
+              "Artist": {
+                "value": "<a href=\"https://example.com/artist\">Jane Example</a>"
+              },
+              "LicenseShortName": {
+                "value": "CC BY-SA 4.0"
+              },
+              "LicenseUrl": {
+                "value": "https://creativecommons.org/licenses/by-sa/4.0/"
+              },
+              "Attribution": {
+                "value": "Jane Example / CC BY-SA 4.0"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

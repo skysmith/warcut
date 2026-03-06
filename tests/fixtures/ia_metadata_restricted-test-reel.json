@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "identifier": "restricted-test-reel",
+    "title": "Restricted Test Reel",
+    "creator": "Archive Tester",
+    "date": "1937",
+    "rights": "Copyright restricted"
+  },
+  "files": [
+    {
+      "name": "restricted_test_reel_h264.mp4",
+      "format": "h.264 IA",
+      "source": "derivative",
+      "size": "1048576"
+    }
+  ]
+}

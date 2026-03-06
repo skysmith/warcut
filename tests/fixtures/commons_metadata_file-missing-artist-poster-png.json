@@ -1,0 +1,32 @@
+{
+  "batchcomplete": "",
+  "query": {
+    "pages": {
+      "202": {
+        "pageid": 202,
+        "ns": 6,
+        "title": "File:Missing Artist Poster.png",
+        "imageinfo": [
+          {
+            "url": "https://upload.wikimedia.org/example/missing-artist-poster.png",
+            "descriptionurl": "https://commons.wikimedia.org/wiki/File:Missing_Artist_Poster.png",
+            "mime": "image/png",
+            "width": 2200,
+            "height": 1600,
+            "extmetadata": {
+              "ObjectName": {
+                "value": "Missing Artist Poster"
+              },
+              "LicenseShortName": {
+                "value": "Public domain"
+              },
+              "LicenseUrl": {
+                "value": "https://creativecommons.org/publicdomain/mark/1.0/"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

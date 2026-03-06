@@ -1,0 +1,17 @@
+{
+  "batchcomplete": "",
+  "query": {
+    "search": [
+      {
+        "ns": 6,
+        "title": "File:Valid Commons Photo.jpg",
+        "pageid": 101
+      },
+      {
+        "ns": 6,
+        "title": "File:Missing Artist Poster.png",
+        "pageid": 202
+      }
+    ]
+  }
+}
