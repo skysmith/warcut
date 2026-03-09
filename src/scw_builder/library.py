@@ -47,6 +47,7 @@ class CuratedAssetRecord(BaseModel):
     source_url: str | None = None
     source_local_filepath: str | None = None
     curated_filepath: str | None = None
+    preview_url: str | None = None
     page_title: str | None = None
     identifier: str | None = None
     raw_metadata_path: str | None = None
@@ -90,6 +91,7 @@ def ingest_manifest(manifest: Manifest, curated_root: Path) -> list[CuratedAsset
             "tags": record.tags,
             "item_path": f"items/{record.asset_key}.json",
             "curated_filepath": record.curated_filepath,
+            "preview_url": record.preview_url,
             "source_url": record.source_url,
         }
         for record in ordered
@@ -250,6 +252,7 @@ def _record_from_asset(
         source_url=asset.source_url,
         source_local_filepath=_relativize(asset.local_filepath, curated_root.parent),
         curated_filepath=curated_filepath,
+        preview_url=_preview_url_for_asset(asset, curated_root.parent),
         page_title=asset.page_title,
         identifier=asset.identifier,
         raw_metadata_path=_relativize(asset.raw_metadata_path, curated_root.parent),
@@ -349,6 +352,8 @@ def _merge_records(existing: CuratedAssetRecord, new: CuratedAssetRecord) -> Cur
     existing.notes = unique_preserving_order(existing.notes + new.notes)
     if new.curated_filepath:
         existing.curated_filepath = new.curated_filepath
+    if new.preview_url:
+        existing.preview_url = new.preview_url
     if new.source_local_filepath:
         existing.source_local_filepath = new.source_local_filepath
     if new.raw_metadata_path:
@@ -374,9 +379,45 @@ def _merge_tags(left: dict[str, list[str] | str], right: dict[str, list[str] | s
 
 def _preview_markup(entry: dict[str, object]) -> str:
     media_type = entry.get("media_type")
-    preview_path = entry.get("curated_filepath") or entry.get("source_local_filepath")
+    preview_path = (
+        entry.get("curated_filepath")
+        or entry.get("source_local_filepath")
+        or entry.get("preview_url")
+    )
     if preview_path:
         if media_type == "video":
             return f'<video controls preload="metadata" src="{preview_path}"></video>'
         return f'<img src="{preview_path}" alt="{entry["title"]}">'
     return '<div class="placeholder">No Local Preview</div>'
+
+
+def _preview_url_for_asset(asset: ManifestAsset, root: Path) -> str | None:
+    raw_path = _dereference(asset.raw_metadata_path, root)
+    if not raw_path or not raw_path.exists():
+        return None
+    try:
+        data = json.loads(raw_path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    if asset.provider == "commons":
+        pages = data.get("query", {}).get("pages", {})
+        for page in pages.values():
+            imageinfo = (page.get("imageinfo") or [{}])[0]
+            if imageinfo.get("thumburl"):
+                return imageinfo["thumburl"]
+            if imageinfo.get("url"):
+                return imageinfo["url"]
+    if asset.provider == "internet_archive":
+        files = data.get("files") or []
+        for file_data in files:
+            name = file_data.get("name", "")
+            if name.lower().endswith((".mp4", ".m4v", ".mov")) and asset.identifier:
+                return f"https://archive.org/download/{asset.identifier}/{name}"
+    return None
+
+
+def _dereference(value: str | None, root: Path) -> Path | None:
+    if not value:
+        return None
+    path = Path(value)
+    return path if path.is_absolute() else root / path
