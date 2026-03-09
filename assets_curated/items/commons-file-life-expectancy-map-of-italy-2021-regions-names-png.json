@@ -1,0 +1,52 @@
+{
+  "asset_key": "commons-file-life-expectancy-map-of-italy-2021-regions-names-png",
+  "title": "Life expectancy map of Italy 2021 -regions, names",
+  "provider": "commons",
+  "media_type": "image",
+  "mime_type": "image/png",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Life_expectancy_map_of_Italy_2021_-regions,_names.png",
+  "source_local_filepath": "build/ep01/assets/commons/145344380_file-life-expectancy-map-of-italy-2021-regions-names.png",
+  "curated_filepath": null,
+  "page_title": "File:Life expectancy map of Italy 2021 -regions, names.png",
+  "identifier": null,
+  "raw_metadata_path": "build/ep01/assets/commons/145344380_file-life-expectancy-map-of-italy-2021-regions-names.json",
+  "episode_ids": [
+    "ep01"
+  ],
+  "beat_ids": [
+    "map_move_regions"
+  ],
+  "captions": [
+    "A FRAGILE CENTER"
+  ],
+  "tags": {
+    "region": [],
+    "theme": [
+      "autonomy",
+      "map"
+    ],
+    "asset_type": [
+      "map_move",
+      "map"
+    ],
+    "period": [
+      "2021"
+    ],
+    "mood": [],
+    "quality": "usable"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "Life expectancy map of Italy 2021 -regions, names",
+    "author": "Lady3mlnm",
+    "creator": "Lady3mlnm",
+    "date": null,
+    "identifier": null,
+    "license_name": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "rights_statement": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Life_expectancy_map_of_Italy_2021_-regions,_names.png",
+    "attribution_text": "Own work",
+    "attribution_html": null
+  }
+}

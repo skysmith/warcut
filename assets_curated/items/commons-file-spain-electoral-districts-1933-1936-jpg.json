@@ -1,0 +1,67 @@
+{
+  "asset_key": "commons-file-spain-electoral-districts-1933-1936-jpg",
+  "title": "Spain, electoral districts 1933-1936",
+  "provider": "commons",
+  "media_type": "image",
+  "mime_type": "image/jpeg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Spain,_electoral_districts_1933-1936.jpg",
+  "source_local_filepath": "build/ep01/assets/commons/144248256_file-spain-electoral-districts-1933-1936.jpg",
+  "curated_filepath": null,
+  "page_title": "File:Spain, electoral districts 1933-1936.jpg",
+  "identifier": null,
+  "raw_metadata_path": "build/ep01/assets/commons/144248256_file-spain-electoral-districts-1933-1936.json",
+  "episode_ids": [
+    "ep01"
+  ],
+  "beat_ids": [
+    "thesis",
+    "pressure_gauge",
+    "so_what"
+  ],
+  "captions": [
+    "EPISODE 1",
+    "1931\u20131936",
+    "SO WHAT CHANGED?"
+  ],
+  "tags": {
+    "region": [
+      "madrid"
+    ],
+    "theme": [
+      "autonomy",
+      "elections",
+      "map",
+      "propaganda"
+    ],
+    "asset_type": [
+      "still",
+      "map",
+      "doc_scan",
+      "poster"
+    ],
+    "period": [
+      "1933",
+      "1936",
+      "1931"
+    ],
+    "mood": [
+      "violence",
+      "institutional"
+    ],
+    "quality": "strong"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "Spain, electoral districts 1933-1936",
+    "author": "Hh1718",
+    "creator": "Hh1718",
+    "date": null,
+    "identifier": null,
+    "license_name": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "rights_statement": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spain,_electoral_districts_1933-1936.jpg",
+    "attribution_text": "Own work",
+    "attribution_html": null
+  }
+}

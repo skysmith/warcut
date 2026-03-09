@@ -1,0 +1,56 @@
+{
+  "asset_key": "commons-file-lord-of-the-horses-old-iberian-god-villaricos-almeria-museu-d-arqueologia-de-catalunya-barcelona-2014-jpg",
+  "title": "Lord of the Horses - Old Iberian god - Villaricos (Almeria) - Museu d'Arqueologia de Catalunya - Barcelona 2014",
+  "provider": "commons",
+  "media_type": "image",
+  "mime_type": "image/jpeg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Lord_of_the_Horses_-_Old_Iberian_god_-_Villaricos_(Almeria)_-_Museu_d%27Arqueologia_de_Catalunya_-_Barcelona_2014.JPG",
+  "source_local_filepath": "build/ep01/assets/commons/31481528_file-lord-of-the-horses-old-iberian-god-villaricos-almeria-museu-d-arqueologia-de-catalunya-barcelona-2014.jpg",
+  "curated_filepath": null,
+  "page_title": "File:Lord of the Horses - Old Iberian god - Villaricos (Almeria) - Museu d'Arqueologia de Catalunya - Barcelona 2014.JPG",
+  "identifier": null,
+  "raw_metadata_path": "build/ep01/assets/commons/31481528_file-lord-of-the-horses-old-iberian-god-villaricos-almeria-museu-d-arqueologia-de-catalunya-barcelona-2014.json",
+  "episode_ids": [
+    "ep01"
+  ],
+  "beat_ids": [
+    "map_move_regions"
+  ],
+  "captions": [
+    "A FRAGILE CENTER"
+  ],
+  "tags": {
+    "region": [
+      "catalonia",
+      "basque_country",
+      "andalusia"
+    ],
+    "theme": [
+      "autonomy",
+      "map"
+    ],
+    "asset_type": [
+      "map_move",
+      "map"
+    ],
+    "period": [
+      "2014"
+    ],
+    "mood": [],
+    "quality": "usable"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "Lord of the Horses - Old Iberian god - Villaricos (Almeria) - Museu d'Arqueologia de Catalunya - Barcelona 2014",
+    "author": "Jos\u00e9 Luiz",
+    "creator": "Jos\u00e9 Luiz",
+    "date": null,
+    "identifier": null,
+    "license_name": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "rights_statement": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Lord_of_the_Horses_-_Old_Iberian_god_-_Villaricos_(Almeria)_-_Museu_d%27Arqueologia_de_Catalunya_-_Barcelona_2014.JPG",
+    "attribution_text": "\u00a9 Jos\u00e9 Luiz Bernardes Ribeiro",
+    "attribution_html": null
+  }
+}

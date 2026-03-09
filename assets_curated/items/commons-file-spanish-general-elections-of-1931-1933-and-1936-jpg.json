@@ -1,0 +1,58 @@
+{
+  "asset_key": "commons-file-spanish-general-elections-of-1931-1933-and-1936-jpg",
+  "title": "Spanish general elections of 1931, 1933 and 1936",
+  "provider": "commons",
+  "media_type": "image",
+  "mime_type": "image/jpeg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Spanish_general_elections_of_1931,_1933_and_1936.jpg",
+  "source_local_filepath": "build/ep01/assets/commons/149205167_file-spanish-general-elections-of-1931-1933-and-1936.jpg",
+  "curated_filepath": null,
+  "page_title": "File:Spanish general elections of 1931, 1933 and 1936.jpg",
+  "identifier": null,
+  "raw_metadata_path": "build/ep01/assets/commons/149205167_file-spanish-general-elections-of-1931-1933-and-1936.json",
+  "episode_ids": [
+    "ep01"
+  ],
+  "beat_ids": [
+    "thesis"
+  ],
+  "captions": [
+    "EPISODE 1"
+  ],
+  "tags": {
+    "region": [],
+    "theme": [
+      "autonomy",
+      "elections",
+      "map"
+    ],
+    "asset_type": [
+      "still",
+      "map"
+    ],
+    "period": [
+      "1931",
+      "1933",
+      "1936"
+    ],
+    "mood": [
+      "violence",
+      "institutional"
+    ],
+    "quality": "strong"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "Spanish general elections of 1931, 1933 and 1936",
+    "author": "Hh1718",
+    "creator": "Hh1718",
+    "date": null,
+    "identifier": null,
+    "license_name": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "rights_statement": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spanish_general_elections_of_1931,_1933_and_1936.jpg",
+    "attribution_text": "Own work",
+    "attribution_html": null
+  }
+}

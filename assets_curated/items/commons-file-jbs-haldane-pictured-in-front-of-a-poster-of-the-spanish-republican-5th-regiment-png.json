@@ -1,0 +1,54 @@
+{
+  "asset_key": "commons-file-jbs-haldane-pictured-in-front-of-a-poster-of-the-spanish-republican-5th-regiment-png",
+  "title": "JBS Haldane pictured in front of a poster of the Spanish Republican 5th Regiment",
+  "provider": "commons",
+  "media_type": "image",
+  "mime_type": "image/png",
+  "source_url": "https://commons.wikimedia.org/wiki/File:JBS_Haldane_pictured_in_front_of_a_poster_of_the_Spanish_Republican_5th_Regiment.png",
+  "source_local_filepath": "build/ep01/assets/commons/78470864_file-jbs-haldane-pictured-in-front-of-a-poster-of-the-spanish-republican-5th-regiment.png",
+  "curated_filepath": null,
+  "page_title": "File:JBS Haldane pictured in front of a poster of the Spanish Republican 5th Regiment.png",
+  "identifier": null,
+  "raw_metadata_path": "build/ep01/assets/commons/78470864_file-jbs-haldane-pictured-in-front-of-a-poster-of-the-spanish-republican-5th-regiment.json",
+  "episode_ids": [
+    "ep01"
+  ],
+  "beat_ids": [
+    "vignette_andalusia"
+  ],
+  "captions": [
+    "ANDALUSIA"
+  ],
+  "tags": {
+    "region": [
+      "andalusia"
+    ],
+    "theme": [
+      "land",
+      "propaganda"
+    ],
+    "asset_type": [
+      "still",
+      "poster"
+    ],
+    "period": [],
+    "mood": [
+      "poverty"
+    ],
+    "quality": "usable"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "JBS Haldane pictured in front of a poster of the Spanish Republican 5th Regiment",
+    "author": "Unknown author Unknown author",
+    "creator": "Unknown author Unknown author",
+    "date": null,
+    "identifier": null,
+    "license_name": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "rights_statement": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:JBS_Haldane_pictured_in_front_of_a_poster_of_the_Spanish_Republican_5th_Regiment.png",
+    "attribution_text": "Extracted from: http://bibliotecavirtualdefensa.es/BVMDefensa/i18n/catalogo_imagenes/grupo.cmd?path=141413 Biblioteca Virtual de Defensa of the Spanish Government Permissions (click on \"Derechos de autor\") listed there as: The Creative Commons CC0 1.0 Universal Public Domain Dedication (CC0)",
+    "attribution_html": null
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "asset_key": "commons-file-campo-de-concentraci-n-de-albatera-mural-explicativo-jpg",
+  "title": "Campo de concentraci\u00f3n de Albatera - Mural explicativo",
+  "provider": "commons",
+  "media_type": "image",
+  "mime_type": "image/jpeg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Campo_de_concentraci%C3%B3n_de_Albatera_-_Mural_explicativo.jpg",
+  "source_local_filepath": "build/ep01/assets/commons/101316336_file-campo-de-concentraci-n-de-albatera-mural-explicativo.jpg",
+  "curated_filepath": null,
+  "page_title": "File:Campo de concentraci\u00f3n de Albatera - Mural explicativo.jpg",
+  "identifier": null,
+  "raw_metadata_path": "build/ep01/assets/commons/101316336_file-campo-de-concentraci-n-de-albatera-mural-explicativo.json",
+  "episode_ids": [
+    "ep01"
+  ],
+  "beat_ids": [
+    "vignette_andalusia"
+  ],
+  "captions": [
+    "ANDALUSIA"
+  ],
+  "tags": {
+    "region": [
+      "andalusia"
+    ],
+    "theme": [
+      "land",
+      "propaganda"
+    ],
+    "asset_type": [
+      "still",
+      "photo"
+    ],
+    "period": [],
+    "mood": [
+      "poverty"
+    ],
+    "quality": "usable"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "Campo de concentraci\u00f3n de Albatera - Mural explicativo",
+    "author": "PedroAcero76",
+    "creator": "PedroAcero76",
+    "date": null,
+    "identifier": null,
+    "license_name": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "rights_statement": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Campo_de_concentraci%C3%B3n_de_Albatera_-_Mural_explicativo.jpg",
+    "attribution_text": "Own work",
+    "attribution_html": null
+  }
+}

@@ -52,3 +52,7 @@ class BuildPaths:
 
 def repo_root_from_episode(episode_path: Path) -> Path:
     return episode_path.resolve().parent.parent
+
+
+def curated_assets_root(root: Path) -> Path:
+    return root / "assets_curated"

@@ -1,0 +1,50 @@
+{
+  "asset_key": "commons-file-india-roadway-map-svg",
+  "title": "India national highway map (detailed)",
+  "provider": "commons",
+  "media_type": "image",
+  "mime_type": "image/svg+xml",
+  "source_url": "https://commons.wikimedia.org/wiki/File:India_roadway_map.svg",
+  "source_local_filepath": "build/ep01/assets/commons/900243_file-india-roadway-map.svg",
+  "curated_filepath": null,
+  "page_title": "File:India roadway map.svg",
+  "identifier": null,
+  "raw_metadata_path": "build/ep01/assets/commons/900243_file-india-roadway-map.json",
+  "episode_ids": [
+    "ep01"
+  ],
+  "beat_ids": [
+    "map_move_regions"
+  ],
+  "captions": [
+    "A FRAGILE CENTER"
+  ],
+  "tags": {
+    "region": [],
+    "theme": [
+      "autonomy",
+      "map"
+    ],
+    "asset_type": [
+      "map_move",
+      "map"
+    ],
+    "period": [],
+    "mood": [],
+    "quality": "usable"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "India national highway map (detailed)",
+    "author": "This Image was created by User:PlaneMad . If you are using the image under the creative commons share alike license please credit the photo CC-by-sa PlaneMad/Wikimedia and include a link to this page. No explicit permission is needed from me, but id appreciate an email if my work has been of help to you. If you dont want to release your work under a creative commons license, please mail me at arun.planemad@gmail.com or catch me at my Website to negotiate a custom license as per your needs.",
+    "creator": "This Image was created by User:PlaneMad . If you are using the image under the creative commons share alike license please credit the photo CC-by-sa PlaneMad/Wikimedia and include a link to this page. No explicit permission is needed from me, but id appreciate an email if my work has been of help to you. If you dont want to release your work under a creative commons license, please mail me at arun.planemad@gmail.com or catch me at my Website to negotiate a custom license as per your needs.",
+    "date": null,
+    "identifier": null,
+    "license_name": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "rights_statement": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:India_roadway_map.svg",
+    "attribution_text": "Own work International Borders: University of Texas map library - India Political map 2001 Disputed Borders: University of Texas map library - China-India Borders - Eastern Sector 1988 & Western Sector 1988 - Kashmir Region 2004 - Kashmir Maps . State and District boundaries: Census of India - 2001 Census State Maps - Survey of India Maps . Other sources: US Army Map Service , Survey of India Map Explorer , Columbia University Map specific sources: NHAI Phase I&II map [1] , NHAI Phase IIIA map [2] , NHAI Phase IIIB map [3] .",
+    "attribution_html": null
+  }
+}

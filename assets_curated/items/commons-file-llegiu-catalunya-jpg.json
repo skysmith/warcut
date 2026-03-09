@@ -1,0 +1,52 @@
+{
+  "asset_key": "commons-file-llegiu-catalunya-jpg",
+  "title": "LLEGIU Catalunya",
+  "provider": "commons",
+  "media_type": "image",
+  "mime_type": "image/jpeg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:LLEGIU_Catalunya.jpg",
+  "source_local_filepath": "build/ep01/assets/commons/126763059_file-llegiu-catalunya.jpg",
+  "curated_filepath": null,
+  "page_title": "File:LLEGIU Catalunya.jpg",
+  "identifier": null,
+  "raw_metadata_path": "build/ep01/assets/commons/126763059_file-llegiu-catalunya.json",
+  "episode_ids": [
+    "ep01"
+  ],
+  "beat_ids": [
+    "vignette_catalonia"
+  ],
+  "captions": [
+    "CATALONIA"
+  ],
+  "tags": {
+    "region": [
+      "catalonia"
+    ],
+    "theme": [
+      "industry",
+      "propaganda"
+    ],
+    "asset_type": [
+      "still",
+      "poster"
+    ],
+    "period": [],
+    "mood": [],
+    "quality": "strong"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "LLEGIU Catalunya",
+    "author": "Revista Catalunya",
+    "creator": "Revista Catalunya",
+    "date": null,
+    "identifier": null,
+    "license_name": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "rights_statement": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:LLEGIU_Catalunya.jpg",
+    "attribution_text": "https://www.flickr.com/photos/revistacatalunya/8617131412/",
+    "attribution_html": null
+  }
+}

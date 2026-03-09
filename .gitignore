@@ -1,4 +1,6 @@
 build/
+assets_curated/files/
+assets_curated_test/
 .venv/
 __pycache__/
 .pytest_cache/

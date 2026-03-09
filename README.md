@@ -78,6 +78,7 @@ scw init
 scw cache episodes/ep01_smoke.yaml
 scw build episodes/ep01_smoke.yaml --offline
 scw build episodes/ep01.yaml
+scw ingest episodes/ep01.yaml
 scw voice episodes/ep01.yaml path/to/vo.wav
 scw publish episodes/ep01.yaml
 ```
@@ -93,6 +94,15 @@ Current limitation:
 
 - `scw voice` stores the narration path in the manifest
 - it does not auto-retime beats yet
+
+Asset library workflow:
+
+1. `scw build episodes/ep01.yaml --offline`
+2. `scw ingest episodes/ep01.yaml`
+3. review `assets_curated/library.json`
+4. edit `assets_curated/items/*.json` to refine tags, notes, and quality
+
+This gives you a curated, local asset library before you are ready to record.
 
 Recommended smoke-test flow:
 
@@ -335,6 +345,12 @@ Important outputs:
   - human-readable voiceover cue sheet with beat timing and script text
 - `voice_cues.json`
   - machine-readable cue sheet with beat timing and script text
+- `assets_curated/library.json`
+  - curated asset index built from manifest-selected media
+- `assets_curated/items/*.json`
+  - per-asset editable sidecars with inferred tags
+- `assets_curated/files/`
+  - copied local media for the curated library
 - `assets/commons/`
   - fetched Commons media plus adjacent metadata JSON
 - `assets/ia_clips/`
@@ -426,8 +442,9 @@ Current build review:
 Recommended next steps after this checkpoint:
 
 1. Review `build/ep01/animatic.mp4`
-2. Record against `build/ep01/voice_cues.md`
-3. Replace weak source picks before final voice lock
+2. Run `scw ingest episodes/ep01.yaml`
+3. Review and retag `assets_curated/items/*.json`
+4. Record against `build/ep01/voice_cues.md` when ready
 
 ## Testing
 

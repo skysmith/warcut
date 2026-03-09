@@ -1,0 +1,58 @@
+{
+  "asset_key": "local-map-base-svg",
+  "title": "map_base.svg",
+  "provider": "local",
+  "media_type": "image",
+  "mime_type": "image/svg+xml",
+  "source_url": null,
+  "source_local_filepath": "assets_static/brand/map_base.svg",
+  "curated_filepath": "files/local-map-base-svg.svg",
+  "page_title": "map_base.svg",
+  "identifier": null,
+  "raw_metadata_path": null,
+  "episode_ids": [
+    "ep01"
+  ],
+  "beat_ids": [
+    "thesis",
+    "so_what"
+  ],
+  "captions": [
+    "EPISODE 1",
+    "SO WHAT CHANGED?"
+  ],
+  "tags": {
+    "region": [
+      "madrid"
+    ],
+    "theme": [
+      "autonomy",
+      "map"
+    ],
+    "asset_type": [
+      "still",
+      "map"
+    ],
+    "period": [
+      "1936"
+    ],
+    "mood": [
+      "violence"
+    ],
+    "quality": "usable"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "map_base.svg",
+    "author": "Local asset",
+    "creator": null,
+    "date": null,
+    "identifier": null,
+    "license_name": "User supplied",
+    "license_url": null,
+    "rights_statement": null,
+    "source_url": "/Users/sky/.openclaw/workspace/warcut/assets_static/brand/map_base.svg",
+    "attribution_text": "User-supplied local asset.",
+    "attribution_html": null
+  }
+}

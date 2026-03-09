@@ -1,0 +1,60 @@
+{
+  "asset_key": "commons-file-millicians-a-barcelona-ell-1936-jpg",
+  "title": "Millicians a Barcelona ell 1936",
+  "provider": "commons",
+  "media_type": "image",
+  "mime_type": "image/jpeg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Millicians_a_Barcelona_ell_1936.jpg",
+  "source_local_filepath": "build/ep01/assets/commons/58656052_file-millicians-a-barcelona-ell-1936.jpg",
+  "curated_filepath": null,
+  "page_title": "File:Millicians a Barcelona ell 1936.jpg",
+  "identifier": null,
+  "raw_metadata_path": "build/ep01/assets/commons/58656052_file-millicians-a-barcelona-ell-1936.json",
+  "episode_ids": [
+    "ep01"
+  ],
+  "beat_ids": [
+    "cold_open_montage",
+    "mini_case_study_barcelona"
+  ],
+  "captions": [
+    "SPAIN \u00b7 JULY 1936",
+    "BARCELONA"
+  ],
+  "tags": {
+    "region": [
+      "catalonia",
+      "madrid"
+    ],
+    "theme": [
+      "militia"
+    ],
+    "asset_type": [
+      "montage",
+      "photo",
+      "still"
+    ],
+    "period": [
+      "1936"
+    ],
+    "mood": [
+      "crowd",
+      "violence"
+    ],
+    "quality": "strong"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "Millicians a Barcelona ell 1936",
+    "author": "David Seymur",
+    "creator": "David Seymur",
+    "date": null,
+    "identifier": null,
+    "license_name": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "rights_statement": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Millicians_a_Barcelona_ell_1936.jpg",
+    "attribution_text": "http://arxiusenlinia.cultura.gencat.cat/ArxiusEnLinia/fitxaImatge.do?primera=1&codiUnitat=260397&posIm=0&totalIm=1&tipusUnitat=1&codiImatge=2024251&pageGal=1&nivellsAriadna=&on=&nivell=&fulla=&posUni=&totalUniT=&totalUniN=&pageUni=&unic=&unicUni=&cerca=simple&pos=&total=&page=&tipusUnitatCerca=&selecimatges=3&contingut=milicians&dataInici=1936&dataFi=1936&dataConcreta=0&codiDescOno=&codiDescOno2=&relDescOno=&codiDescTema=&codiDescTema2=&relDescTema=&codiDescTopo=&llocPrecis=&codiAutor=&titol=&tipusdoc=&tipusfons=&nomfons=&unitatInici=&unitatFi=&desc=&codiarxiu=&codifons=&idarxiu=&idfons=&codiProc=&codiClass=&codigrup=ANC&arxiuFiltre=&codigrupSelect=ANC&codiProcCerca=&codiClassCerca=&codiSerieCerca=&tipusdoc1=&tipusdoc2=&tipusdoc3=&tipusdoc4=&tipusdoc5=&supor",
+    "attribution_html": null
+  }
+}

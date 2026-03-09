@@ -1,0 +1,56 @@
+{
+  "asset_key": "commons-file-feu-tancs-jpg",
+  "title": "Feu tancs",
+  "provider": "commons",
+  "media_type": "image",
+  "mime_type": "image/jpeg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Feu_tancs.jpg",
+  "source_local_filepath": "build/ep01/assets/commons/181032123_file-feu-tancs.jpg",
+  "curated_filepath": null,
+  "page_title": "File:Feu tancs.jpg",
+  "identifier": null,
+  "raw_metadata_path": "build/ep01/assets/commons/181032123_file-feu-tancs.json",
+  "episode_ids": [
+    "ep01"
+  ],
+  "beat_ids": [
+    "vignette_andalusia"
+  ],
+  "captions": [
+    "ANDALUSIA"
+  ],
+  "tags": {
+    "region": [
+      "catalonia",
+      "andalusia"
+    ],
+    "theme": [
+      "land",
+      "propaganda"
+    ],
+    "asset_type": [
+      "still",
+      "poster"
+    ],
+    "period": [],
+    "mood": [
+      "violence",
+      "poverty"
+    ],
+    "quality": "usable"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "Feu tancs",
+    "author": "Jordi Gili",
+    "creator": "Jordi Gili",
+    "date": null,
+    "identifier": null,
+    "license_name": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "rights_statement": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Feu_tancs.jpg",
+    "attribution_text": "Own work",
+    "attribution_html": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "asset_key": "internet_archive-61114-yesterdays-newsreel-the-spanish-civil-war-vwr",
+  "title": "YESTERDAYS NEWSREEL 20TH CENTURY   SPANISH CIVIL WAR  WRIGHT DRAGONFLY PLANE  ALBERT EINSTEIN  61114",
+  "provider": "internet_archive",
+  "media_type": "video",
+  "mime_type": "video/mp4",
+  "source_url": "https://archive.org/details/61114-yesterdays-newsreel-the-spanish-civil-war-vwr",
+  "source_local_filepath": "build/ep01/assets/ia_clips/door_slam_multiple_authorities_61114-yesterdays-newsreel-the-spanish-civil-war-vwr_8dd9f95409.mp4",
+  "curated_filepath": "files/internet_archive-61114-yesterdays-newsreel-the-spanish-civil-war-vwr.mp4",
+  "page_title": null,
+  "identifier": "61114-yesterdays-newsreel-the-spanish-civil-war-vwr",
+  "raw_metadata_path": "build/ep01/assets/ia_clips/door_slam_multiple_authorities_61114-yesterdays-newsreel-the-spanish-civil-war-vwr_8dd9f95409.mp4.json",
+  "episode_ids": [
+    "ep01"
+  ],
+  "beat_ids": [
+    "coup_as_accelerant",
+    "door_slam_multiple_authorities"
+  ],
+  "captions": [
+    "JULY 1936",
+    "THE STATE SHATTERS"
+  ],
+  "tags": {
+    "region": [],
+    "theme": [
+      "newsreel",
+      "militia"
+    ],
+    "asset_type": [
+      "archival_clip",
+      "clip"
+    ],
+    "period": [
+      "1936"
+    ],
+    "mood": [
+      "violence"
+    ],
+    "quality": "strong"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "YESTERDAYS NEWSREEL 20TH CENTURY   SPANISH CIVIL WAR  WRIGHT DRAGONFLY PLANE  ALBERT EINSTEIN  61114",
+    "author": null,
+    "creator": null,
+    "date": null,
+    "identifier": "61114-yesterdays-newsreel-the-spanish-civil-war-vwr",
+    "license_name": "See rights statement",
+    "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "rights_statement": null,
+    "source_url": "https://archive.org/details/61114-yesterdays-newsreel-the-spanish-civil-war-vwr",
+    "attribution_text": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "attribution_html": null
+  }
+}

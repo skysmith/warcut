@@ -1,0 +1,50 @@
+{
+  "asset_key": "commons-file-spain-regions-map-cs-png",
+  "title": "Spain regions map (cs)",
+  "provider": "commons",
+  "media_type": "image",
+  "mime_type": "image/png",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Spain_regions_map_(cs).png",
+  "source_local_filepath": "build/ep01/assets/commons/114447990_file-spain-regions-map-cs.png",
+  "curated_filepath": null,
+  "page_title": "File:Spain regions map (cs).png",
+  "identifier": null,
+  "raw_metadata_path": "build/ep01/assets/commons/114447990_file-spain-regions-map-cs.json",
+  "episode_ids": [
+    "ep01"
+  ],
+  "beat_ids": [
+    "map_move_regions"
+  ],
+  "captions": [
+    "A FRAGILE CENTER"
+  ],
+  "tags": {
+    "region": [],
+    "theme": [
+      "autonomy",
+      "map"
+    ],
+    "asset_type": [
+      "map_move",
+      "map"
+    ],
+    "period": [],
+    "mood": [],
+    "quality": "usable"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "Spain regions map (cs)",
+    "author": "Peter Fitzgerald , Czech translation: Honza Z\u00e1ruba",
+    "creator": "Peter Fitzgerald , Czech translation: Honza Z\u00e1ruba",
+    "date": null,
+    "identifier": null,
+    "license_name": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "rights_statement": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Spain_regions_map_(cs).png",
+    "attribution_text": "Own work based on File:Spain_map.svg",
+    "attribution_html": null
+  }
+}

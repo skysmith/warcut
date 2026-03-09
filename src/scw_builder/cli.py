@@ -7,9 +7,11 @@ import tempfile
 from pathlib import Path
 
 from scw_builder.config import BuildPaths, repo_root_from_episode
+from scw_builder.config import curated_assets_root
 from scw_builder.edit.otio_builder import write_otio_json
 from scw_builder.edit.resolve_bridge import write_resolve_script_stub
 from scw_builder.episode_schema import load_episode
+from scw_builder.library import ingest_manifest
 from scw_builder.manifest import read_manifest, write_manifest
 from scw_builder.plan.planner import _beat_requires_sourced_assets, plan_episode
 from scw_builder.render.animatic import build_animatic
@@ -41,6 +43,9 @@ def main() -> None:
     cache_parser = subparsers.add_parser("cache")
     cache_parser.add_argument("episode_path")
 
+    ingest_parser = subparsers.add_parser("ingest")
+    ingest_parser.add_argument("episode_path")
+
     voice_parser = subparsers.add_parser("voice")
     voice_parser.add_argument("episode_path")
     voice_parser.add_argument("voice_path")
@@ -60,6 +65,8 @@ def main() -> None:
         )
     elif args.command == "cache":
         _cmd_cache(Path(args.episode_path))
+    elif args.command == "ingest":
+        _cmd_ingest(Path(args.episode_path))
     elif args.command == "voice":
         _cmd_voice(Path(args.episode_path), Path(args.voice_path))
     elif args.command == "publish":
@@ -148,6 +155,23 @@ def _cmd_cache(episode_path: Path) -> None:
     info(f"cache warmed for {episode.id}")
     _write_coverage_report(manifest, paths.coverage_path)
     _print_coverage_report(manifest)
+
+
+def _cmd_ingest(episode_path: Path) -> None:
+    episode = load_episode(episode_path)
+    root = repo_root_from_episode(episode_path)
+    paths = BuildPaths(root=root, episode_id=episode.id)
+    if not paths.manifest_path.exists():
+        raise FileNotFoundError(
+            f"manifest not found for {episode.id}. Build the episode first: {paths.manifest_path}"
+        )
+    manifest = read_manifest(paths.manifest_path)
+    curated_root = curated_assets_root(root)
+    records = ingest_manifest(manifest, curated_root)
+    info(f"curated library: {curated_root / 'library.json'}")
+    info(f"curated items: {curated_root / 'items'}")
+    info(f"copied files: {curated_root / 'files'}")
+    info(f"ingested {len(records)} unique assets")
 
 
 def _cmd_voice(episode_path: Path, voice_path: Path) -> None:
