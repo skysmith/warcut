@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>warcut asset library</title>
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --panel: #15181d;
+      --text: #f2f2f2;
+      --muted: #a7adb5;
+      --accent: #d14a3a;
+      --line: #2a2f36;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #15181d 0%, #0b0d10 45%);
+      color: var(--text);
+    }
+    header {
+      padding: 32px;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: rgba(11, 13, 16, 0.9);
+      backdrop-filter: blur(8px);
+    }
+    header h1 { margin: 0 0 6px; font-size: 28px; }
+    header p { margin: 0; color: var(--muted); }
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+      padding: 24px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      min-height: 420px;
+    }
+    .preview {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--line);
+      background: #0d1014;
+    }
+    .preview img, .preview video {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+    }
+    .placeholder {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .body { padding: 16px; }
+    h3 { margin: 0 0 8px; font-size: 18px; }
+    .meta, .beats, .tags, .links { color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 12px;
+    }
+    .tags div { margin-bottom: 2px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>warcut asset library</h1>
+    <p>14 curated assets. Edit <code>assets_curated/items/*.json</code> to retag or add notes.</p>
+  </header>
+  <main>
+    
+            <article class="card">
+              <div class="preview"><div class="placeholder">No Local Preview</div></div>
+              <div class="body">
+                <h3>Campo de concentración de Albatera - Mural explicativo</h3>
+                <div class="meta">commons · image</div>
+                <div class="tags"><div><strong>region</strong>: andalusia</div><div><strong>theme</strong>: land, propaganda</div><div><strong>asset_type</strong>: still, photo</div><div><strong>mood</strong>: poverty</div><div><strong>quality</strong>: usable</div></div>
+                <div class="beats"><strong>beats</strong>: vignette_andalusia</div>
+                <div class="links"><a href="items/commons-file-campo-de-concentraci-n-de-albatera-mural-explicativo-jpg.json">metadata</a> <a href="https://commons.wikimedia.org/wiki/File:Campo_de_concentraci%C3%B3n_de_Albatera_-_Mural_explicativo.jpg">source</a></div>
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="preview"><div class="placeholder">No Local Preview</div></div>
+              <div class="body">
+                <h3>Elorza, Rodezno, Oreja, Bilbao 1933</h3>
+                <div class="meta">commons · image</div>
+                <div class="tags"><div><strong>region</strong>: basque_country</div><div><strong>theme</strong>: autonomy</div><div><strong>asset_type</strong>: still, photo</div><div><strong>period</strong>: 1933</div><div><strong>mood</strong>: crowd</div><div><strong>quality</strong>: strong</div></div>
+                <div class="beats"><strong>beats</strong>: vignette_basque</div>
+                <div class="links"><a href="items/commons-file-elorza-rodezno-oreja-bilbao-1933-jpg.json">metadata</a> <a href="https://commons.wikimedia.org/wiki/File:Elorza,_Rodezno,_Oreja,_Bilbao_1933.jpg">source</a></div>
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="preview"><div class="placeholder">No Local Preview</div></div>
+              <div class="body">
+                <h3>Feu tancs</h3>
+                <div class="meta">commons · image</div>
+                <div class="tags"><div><strong>region</strong>: catalonia, andalusia</div><div><strong>theme</strong>: land, propaganda</div><div><strong>asset_type</strong>: still, poster</div><div><strong>mood</strong>: violence, poverty</div><div><strong>quality</strong>: usable</div></div>
+                <div class="beats"><strong>beats</strong>: vignette_andalusia</div>
+                <div class="links"><a href="items/commons-file-feu-tancs-jpg.json">metadata</a> <a href="https://commons.wikimedia.org/wiki/File:Feu_tancs.jpg">source</a></div>
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="preview"><div class="placeholder">No Local Preview</div></div>
+              <div class="body">
+                <h3>India national highway map (detailed)</h3>
+                <div class="meta">commons · image</div>
+                <div class="tags"><div><strong>theme</strong>: autonomy, map</div><div><strong>asset_type</strong>: map_move, map</div><div><strong>quality</strong>: usable</div></div>
+                <div class="beats"><strong>beats</strong>: map_move_regions</div>
+                <div class="links"><a href="items/commons-file-india-roadway-map-svg.json">metadata</a> <a href="https://commons.wikimedia.org/wiki/File:India_roadway_map.svg">source</a></div>
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="preview"><div class="placeholder">No Local Preview</div></div>
+              <div class="body">
+                <h3>JBS Haldane pictured in front of a poster of the Spanish Republican 5th Regiment</h3>
+                <div class="meta">commons · image</div>
+                <div class="tags"><div><strong>region</strong>: andalusia</div><div><strong>theme</strong>: land, propaganda</div><div><strong>asset_type</strong>: still, poster</div><div><strong>mood</strong>: poverty</div><div><strong>quality</strong>: usable</div></div>
+                <div class="beats"><strong>beats</strong>: vignette_andalusia</div>
+                <div class="links"><a href="items/commons-file-jbs-haldane-pictured-in-front-of-a-poster-of-the-spanish-republican-5th-regiment-png.json">metadata</a> <a href="https://commons.wikimedia.org/wiki/File:JBS_Haldane_pictured_in_front_of_a_poster_of_the_Spanish_Republican_5th_Regiment.png">source</a></div>
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="preview"><div class="placeholder">No Local Preview</div></div>
+              <div class="body">
+                <h3>Life expectancy map of Italy 2021 -regions, names</h3>
+                <div class="meta">commons · image</div>
+                <div class="tags"><div><strong>theme</strong>: autonomy, map</div><div><strong>asset_type</strong>: map_move, map</div><div><strong>period</strong>: 2021</div><div><strong>quality</strong>: usable</div></div>
+                <div class="beats"><strong>beats</strong>: map_move_regions</div>
+                <div class="links"><a href="items/commons-file-life-expectancy-map-of-italy-2021-regions-names-png.json">metadata</a> <a href="https://commons.wikimedia.org/wiki/File:Life_expectancy_map_of_Italy_2021_-regions,_names.png">source</a></div>
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="preview"><div class="placeholder">No Local Preview</div></div>
+              <div class="body">
+                <h3>LLEGIU Catalunya</h3>
+                <div class="meta">commons · image</div>
+                <div class="tags"><div><strong>region</strong>: catalonia</div><div><strong>theme</strong>: industry, propaganda</div><div><strong>asset_type</strong>: still, poster</div><div><strong>quality</strong>: strong</div></div>
+                <div class="beats"><strong>beats</strong>: vignette_catalonia</div>
+                <div class="links"><a href="items/commons-file-llegiu-catalunya-jpg.json">metadata</a> <a href="https://commons.wikimedia.org/wiki/File:LLEGIU_Catalunya.jpg">source</a></div>
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="preview"><div class="placeholder">No Local Preview</div></div>
+              <div class="body">
+                <h3>Lord of the Horses - Old Iberian god - Villaricos (Almeria) - Museu d'Arqueologia de Catalunya - Barcelona 2014</h3>
+                <div class="meta">commons · image</div>
+                <div class="tags"><div><strong>region</strong>: catalonia, basque_country, andalusia</div><div><strong>theme</strong>: autonomy, map</div><div><strong>asset_type</strong>: map_move, map</div><div><strong>period</strong>: 2014</div><div><strong>quality</strong>: usable</div></div>
+                <div class="beats"><strong>beats</strong>: map_move_regions</div>
+                <div class="links"><a href="items/commons-file-lord-of-the-horses-old-iberian-god-villaricos-almeria-museu-d-arqueologia-de-catalunya-barcelona-2014-jpg.json">metadata</a> <a href="https://commons.wikimedia.org/wiki/File:Lord_of_the_Horses_-_Old_Iberian_god_-_Villaricos_(Almeria)_-_Museu_d%27Arqueologia_de_Catalunya_-_Barcelona_2014.JPG">source</a></div>
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="preview"><div class="placeholder">No Local Preview</div></div>
+              <div class="body">
+                <h3>Millicians a Barcelona ell 1936</h3>
+                <div class="meta">commons · image</div>
+                <div class="tags"><div><strong>region</strong>: catalonia, madrid</div><div><strong>theme</strong>: militia</div><div><strong>asset_type</strong>: montage, photo, still</div><div><strong>period</strong>: 1936</div><div><strong>mood</strong>: crowd, violence</div><div><strong>quality</strong>: strong</div></div>
+                <div class="beats"><strong>beats</strong>: cold_open_montage, mini_case_study_barcelona</div>
+                <div class="links"><a href="items/commons-file-millicians-a-barcelona-ell-1936-jpg.json">metadata</a> <a href="https://commons.wikimedia.org/wiki/File:Millicians_a_Barcelona_ell_1936.jpg">source</a></div>
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="preview"><div class="placeholder">No Local Preview</div></div>
+              <div class="body">
+                <h3>Spain, electoral districts 1933-1936</h3>
+                <div class="meta">commons · image</div>
+                <div class="tags"><div><strong>region</strong>: madrid</div><div><strong>theme</strong>: autonomy, elections, map, propaganda</div><div><strong>asset_type</strong>: still, map, doc_scan, poster</div><div><strong>period</strong>: 1933, 1936, 1931</div><div><strong>mood</strong>: violence, institutional</div><div><strong>quality</strong>: strong</div></div>
+                <div class="beats"><strong>beats</strong>: thesis, pressure_gauge, so_what</div>
+                <div class="links"><a href="items/commons-file-spain-electoral-districts-1933-1936-jpg.json">metadata</a> <a href="https://commons.wikimedia.org/wiki/File:Spain,_electoral_districts_1933-1936.jpg">source</a></div>
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="preview"><div class="placeholder">No Local Preview</div></div>
+              <div class="body">
+                <h3>Spain regions map (cs)</h3>
+                <div class="meta">commons · image</div>
+                <div class="tags"><div><strong>theme</strong>: autonomy, map</div><div><strong>asset_type</strong>: map_move, map</div><div><strong>quality</strong>: usable</div></div>
+                <div class="beats"><strong>beats</strong>: map_move_regions</div>
+                <div class="links"><a href="items/commons-file-spain-regions-map-cs-png.json">metadata</a> <a href="https://commons.wikimedia.org/wiki/File:Spain_regions_map_(cs).png">source</a></div>
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="preview"><div class="placeholder">No Local Preview</div></div>
+              <div class="body">
+                <h3>Spanish general elections of 1931, 1933 and 1936</h3>
+                <div class="meta">commons · image</div>
+                <div class="tags"><div><strong>theme</strong>: autonomy, elections, map</div><div><strong>asset_type</strong>: still, map</div><div><strong>period</strong>: 1931, 1933, 1936</div><div><strong>mood</strong>: violence, institutional</div><div><strong>quality</strong>: strong</div></div>
+                <div class="beats"><strong>beats</strong>: thesis</div>
+                <div class="links"><a href="items/commons-file-spanish-general-elections-of-1931-1933-and-1936-jpg.json">metadata</a> <a href="https://commons.wikimedia.org/wiki/File:Spanish_general_elections_of_1931,_1933_and_1936.jpg">source</a></div>
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="preview"><video controls preload="metadata" src="files/internet_archive-61114-yesterdays-newsreel-the-spanish-civil-war-vwr.mp4"></video></div>
+              <div class="body">
+                <h3>YESTERDAYS NEWSREEL 20TH CENTURY   SPANISH CIVIL WAR  WRIGHT DRAGONFLY PLANE  ALBERT EINSTEIN  61114</h3>
+                <div class="meta">internet_archive · video</div>
+                <div class="tags"><div><strong>theme</strong>: newsreel, militia</div><div><strong>asset_type</strong>: archival_clip, clip</div><div><strong>period</strong>: 1936</div><div><strong>mood</strong>: violence</div><div><strong>quality</strong>: strong</div></div>
+                <div class="beats"><strong>beats</strong>: coup_as_accelerant, door_slam_multiple_authorities</div>
+                <div class="links"><a href="items/internet_archive-61114-yesterdays-newsreel-the-spanish-civil-war-vwr.json">metadata</a> <a href="https://archive.org/details/61114-yesterdays-newsreel-the-spanish-civil-war-vwr">source</a></div>
+              </div>
+            </article>
+            
+            <article class="card">
+              <div class="preview"><img src="files/local-map-base-svg.svg" alt="map_base.svg"></div>
+              <div class="body">
+                <h3>map_base.svg</h3>
+                <div class="meta">local · image</div>
+                <div class="tags"><div><strong>region</strong>: madrid</div><div><strong>theme</strong>: autonomy, map</div><div><strong>asset_type</strong>: still, map</div><div><strong>period</strong>: 1936</div><div><strong>mood</strong>: violence</div><div><strong>quality</strong>: usable</div></div>
+                <div class="beats"><strong>beats</strong>: thesis, so_what</div>
+                <div class="links"><a href="items/local-map-base-svg.json">metadata</a> </div>
+              </div>
+            </article>
+            
+  </main>
+</body>
+</html>

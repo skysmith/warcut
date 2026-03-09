@@ -11,7 +11,7 @@ from scw_builder.config import curated_assets_root
 from scw_builder.edit.otio_builder import write_otio_json
 from scw_builder.edit.resolve_bridge import write_resolve_script_stub
 from scw_builder.episode_schema import load_episode
-from scw_builder.library import ingest_manifest
+from scw_builder.library import ingest_manifest, write_gallery
 from scw_builder.manifest import read_manifest, write_manifest
 from scw_builder.plan.planner import _beat_requires_sourced_assets, plan_episode
 from scw_builder.render.animatic import build_animatic
@@ -168,9 +168,11 @@ def _cmd_ingest(episode_path: Path) -> None:
     manifest = read_manifest(paths.manifest_path)
     curated_root = curated_assets_root(root)
     records = ingest_manifest(manifest, curated_root)
+    gallery_path = write_gallery(curated_root)
     info(f"curated library: {curated_root / 'library.json'}")
     info(f"curated items: {curated_root / 'items'}")
     info(f"copied files: {curated_root / 'files'}")
+    info(f"gallery: {gallery_path}")
     info(f"ingested {len(records)} unique assets")
 
 

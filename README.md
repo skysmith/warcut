@@ -99,7 +99,7 @@ Asset library workflow:
 
 1. `scw build episodes/ep01.yaml --offline`
 2. `scw ingest episodes/ep01.yaml`
-3. review `assets_curated/library.json`
+3. open `assets_curated/index.html`
 4. edit `assets_curated/items/*.json` to refine tags, notes, and quality
 
 This gives you a curated, local asset library before you are ready to record.
@@ -347,6 +347,8 @@ Important outputs:
   - machine-readable cue sheet with beat timing and script text
 - `assets_curated/library.json`
   - curated asset index built from manifest-selected media
+- `assets_curated/index.html`
+  - local visual gallery for browsing the curated asset library
 - `assets_curated/items/*.json`
   - per-asset editable sidecars with inferred tags
 - `assets_curated/files/`

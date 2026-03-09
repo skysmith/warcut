@@ -98,6 +98,128 @@ def ingest_manifest(manifest: Manifest, curated_root: Path) -> list[CuratedAsset
     return ordered
 
 
+def write_gallery(curated_root: Path) -> Path:
+    library_path = curated_root / "library.json"
+    entries = json.loads(library_path.read_text(encoding="utf-8")) if library_path.exists() else []
+    cards = []
+    for entry in entries:
+        preview = _preview_markup(entry)
+        tags = entry.get("tags", {})
+        tag_lines = []
+        for key in ["region", "theme", "asset_type", "period", "mood"]:
+            values = tags.get(key, [])
+            if values:
+                joined = ", ".join(values)
+                tag_lines.append(f"<div><strong>{key}</strong>: {joined}</div>")
+        quality = tags.get("quality")
+        if quality:
+            tag_lines.append(f"<div><strong>quality</strong>: {quality}</div>")
+        source_url = entry.get("source_url")
+        source_link = f'<a href="{source_url}">source</a>' if source_url else ""
+        item_link = f'<a href="{entry["item_path"]}">metadata</a>'
+        cards.append(
+            f"""
+            <article class="card">
+              <div class="preview">{preview}</div>
+              <div class="body">
+                <h3>{entry['title']}</h3>
+                <div class="meta">{entry['provider']} · {entry['media_type']}</div>
+                <div class="tags">{''.join(tag_lines)}</div>
+                <div class="beats"><strong>beats</strong>: {', '.join(entry.get('beat_ids', []))}</div>
+                <div class="links">{item_link} {source_link}</div>
+              </div>
+            </article>
+            """
+        )
+    html = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>warcut asset library</title>
+  <style>
+    :root {{
+      --bg: #0b0d10;
+      --panel: #15181d;
+      --text: #f2f2f2;
+      --muted: #a7adb5;
+      --accent: #d14a3a;
+      --line: #2a2f36;
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #15181d 0%, #0b0d10 45%);
+      color: var(--text);
+    }}
+    header {{
+      padding: 32px;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: rgba(11, 13, 16, 0.9);
+      backdrop-filter: blur(8px);
+    }}
+    header h1 {{ margin: 0 0 6px; font-size: 28px; }}
+    header p {{ margin: 0; color: var(--muted); }}
+    main {{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+      padding: 24px;
+    }}
+    .card {{
+      border: 1px solid var(--line);
+      background: var(--panel);
+      min-height: 420px;
+    }}
+    .preview {{
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--line);
+      background: #0d1014;
+    }}
+    .preview img, .preview video {{
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+    }}
+    .placeholder {{
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }}
+    .body {{ padding: 16px; }}
+    h3 {{ margin: 0 0 8px; font-size: 18px; }}
+    .meta, .beats, .tags, .links {{ color: var(--muted); font-size: 13px; line-height: 1.5; }}
+    .links a {{
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 12px;
+    }}
+    .tags div {{ margin-bottom: 2px; }}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>warcut asset library</h1>
+    <p>{len(entries)} curated assets. Edit <code>assets_curated/items/*.json</code> to retag or add notes.</p>
+  </header>
+  <main>
+    {''.join(cards)}
+  </main>
+</body>
+</html>
+"""
+    output = curated_root / "index.html"
+    output.write_text(html, encoding="utf-8")
+    return output
+
+
 def _load_library(items_dir: Path) -> dict[str, CuratedAssetRecord]:
     records: dict[str, CuratedAssetRecord] = {}
     if not items_dir.exists():
@@ -248,3 +370,13 @@ def _merge_tags(left: dict[str, list[str] | str], right: dict[str, list[str] | s
         else:
             merged[key] = value
     return merged
+
+
+def _preview_markup(entry: dict[str, object]) -> str:
+    media_type = entry.get("media_type")
+    preview_path = entry.get("curated_filepath") or entry.get("source_local_filepath")
+    if preview_path:
+        if media_type == "video":
+            return f'<video controls preload="metadata" src="{preview_path}"></video>'
+        return f'<img src="{preview_path}" alt="{entry["title"]}">'
+    return '<div class="placeholder">No Local Preview</div>'
