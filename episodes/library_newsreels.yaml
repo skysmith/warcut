@@ -1,0 +1,174 @@
+id: library_newsreels
+title: "spanish civil war newsreel library sweep"
+duration_target_sec: 360
+
+voice:
+  mode: voice_only
+  narration_wav: null
+
+style:
+  theme: "noir_doc"
+  aspect: "16:9"
+  fps: 30
+  font_family: "Inter"
+  safe_margin_px: 80
+  accent_color: "burnt_red"
+
+sources:
+  enable_commons: false
+  enable_internet_archive: true
+  commons:
+    max_assets_per_beat: 1
+    min_resolution_px: 1000
+  internet_archive:
+    max_assets_per_beat: 3
+    max_clip_sec: 12
+
+guardrails:
+  require_license_metadata: true
+  block_ai_generated_archival: true
+  require_source_urls_in_credits: true
+
+beats:
+  - id: reels_overview
+    type: archival_clip
+    duration_sec: 30
+    keywords:
+      - "Spanish Civil War newsreel"
+      - "Spanish Civil War archive footage"
+    pinned:
+      ia_identifiers:
+        - "Newsreels-Spanish-Civil-War"
+        - "61114-yesterdays-newsreel-the-spanish-civil-war-vwr"
+    search:
+      internet_archive:
+        - "Spanish Civil War newsreel"
+        - "Spanish Civil War archive footage"
+        - "Spanish civil war 1936 footage"
+
+  - id: july_1936_uprising
+    type: archival_clip
+    duration_sec: 30
+    keywords:
+      - "Spain July 1936 uprising footage"
+      - "Barcelona July 1936 footage"
+    pinned:
+      ia_identifiers:
+        - "report-on-the-revolutionary-movement-in-barcelona-1936_202005"
+        - "ayudaamadrid1936supportmadridacntfaipresentation"
+    search:
+      internet_archive:
+        - "Spain July 1936 uprising footage"
+        - "Barcelona 1936 footage"
+        - "Madrid 1936 uprising footage"
+
+  - id: madrid_front
+    type: archival_clip
+    duration_sec: 30
+    keywords:
+      - "Madrid civil war newsreel"
+      - "Madrid 1936 1937 footage"
+    search:
+      internet_archive:
+        - "Madrid civil war newsreel"
+        - "Madrid 1936 1937 footage"
+        - "Madrid war footage newsreel"
+
+  - id: barcelona_streets
+    type: archival_clip
+    duration_sec: 30
+    keywords:
+      - "Barcelona civil war footage"
+      - "Barcelona street militia footage"
+    search:
+      internet_archive:
+        - "Barcelona civil war footage"
+        - "Barcelona street militia footage"
+        - "Barcelona 1936 barricades footage"
+
+  - id: guernica_and_basque
+    type: archival_clip
+    duration_sec: 30
+    keywords:
+      - "Guernica bombing newsreel"
+      - "Basque country civil war footage"
+    pinned:
+      ia_identifiers:
+        - "1936-09-09_Terrified_Civilians_Flee_Air_Raid"
+        - "MovietoneItalianEthiopianWar"
+    search:
+      internet_archive:
+        - "Guernica bombing newsreel"
+        - "Basque country civil war footage"
+        - "Bilbao 1937 footage"
+
+  - id: international_brigades
+    type: archival_clip
+    duration_sec: 30
+    keywords:
+      - "International Brigades Spain footage"
+      - "Brigadistas Spain newsreel"
+    pinned:
+      ia_identifiers:
+        - "the-spanish-earth-1937"
+        - "TheSpanishEarth1937DirJorisIvensNarrErnestHemingwayOriginalUneditedVersion"
+    search:
+      internet_archive:
+        - "International Brigades Spain footage"
+        - "Brigadistas Spain newsreel"
+        - "Abraham Lincoln Brigade footage Spain"
+
+  - id: civilian_life
+    type: archival_clip
+    duration_sec: 30
+    keywords:
+      - "Spanish Civil War civilians footage"
+      - "Spain refugees 1937 footage"
+    search:
+      internet_archive:
+        - "Spanish Civil War civilians footage"
+        - "Spain refugees 1937 footage"
+        - "Spain wartime city life newsreel"
+
+  - id: propaganda_reels
+    type: archival_clip
+    duration_sec: 30
+    keywords:
+      - "Spanish republican propaganda film"
+      - "Spanish nationalist propaganda film"
+    pinned:
+      ia_identifiers:
+        - "ayudaamadrid1936supportmadridacntfaipresentation"
+        - "report-on-the-revolutionary-movement-in-barcelona-1936_202005"
+    search:
+      internet_archive:
+        - "Spanish republican propaganda film"
+        - "Spanish nationalist propaganda film"
+        - "Spain propaganda newsreel 1930s"
+
+  - id: final_phase_1938_39
+    type: archival_clip
+    duration_sec: 30
+    keywords:
+      - "Spain civil war 1938 footage"
+      - "Barcelona 1939 footage"
+    search:
+      internet_archive:
+        - "Spain civil war 1938 footage"
+        - "Barcelona 1939 footage"
+        - "Spanish Civil War end 1939 newsreel"
+
+  - id: retrospective_collections
+    type: archival_clip
+    duration_sec: 30
+    keywords:
+      - "Yesterday's Newsreel Spanish Civil War"
+      - "historical war newsreel Spain"
+    pinned:
+      ia_identifiers:
+        - "61114-yesterdays-newsreel-the-spanish-civil-war-vwr"
+    search:
+      internet_archive:
+        - "Yesterday's Newsreel Spanish Civil War"
+        - "historical war newsreel Spain"
+        - "Prelinger Spanish Civil War"

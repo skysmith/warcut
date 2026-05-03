@@ -14,6 +14,15 @@ This README is written as a handoff doc for another LLM or engineer. It should
 be enough context to safely generate episode scripts, YAML, or small repo edits
 without guessing the project structure.
 
+## Research Routing
+
+- Canonical project home: `lab/media/warcut`
+- Atlas wiki routing page: `wiki/atlas/spanish-civil-war-research.md`
+- Project-local orientation anchor: `mind-map.md`
+- Durable research folder: `research/`
+- Routing decision note: `research/spanish-civil-war-footprint-audit.md`
+- Active episode spine: `episodes/ep01.yaml`
+
 ## What This Repo Does
 
 Input:
@@ -80,7 +89,10 @@ scw build episodes/ep01_smoke.yaml --offline
 scw build episodes/ep01.yaml
 scw ingest episodes/ep01.yaml
 scw voice episodes/ep01.yaml path/to/vo.wav
+scw tts-openai episodes/ep01.yaml --dry-run
+scw render-final episodes/ep01.yaml --fit-narration
 scw publish episodes/ep01.yaml
+scw benchmark-planner
 ```
 
 Voiceover workflow:
@@ -90,10 +102,29 @@ Voiceover workflow:
 3. Record a WAV
 4. `scw voice episodes/ep01.yaml /absolute/path/to/your_vo.wav`
 
+OpenAI TTS first-video workflow:
+
+1. `scw build episodes/ep01.yaml --offline`
+2. `scw tts-openai episodes/ep01.yaml --env-file .env`
+3. `scw render-final episodes/ep01.yaml --fit-narration`
+
+This writes narration to `build/ep01/narration/`, stores the narration path in
+`build/ep01/manifest.json`, and writes the muxed draft to
+`build/ep01/publish/ep01-first-video.mp4`.
+
+The `--fit-narration` flag compresses or stretches the animatic to the narration
+duration, which is useful for first-pass TTS drafts before beat timing has been
+manually tuned.
+
+Use `--dry-run` to verify the target path and sidecar metadata without calling
+the OpenAI API.
+
 Current limitation:
 
 - `scw voice` stores the narration path in the manifest
 - it does not auto-retime beats yet
+- `scw tts-openai` currently generates one full-episode narration file, not
+  independently retimed per-beat audio
 
 Asset library workflow:
 
@@ -111,6 +142,22 @@ cd warcut
 PYTHONPATH=src python3 -m scw_builder.cli cache episodes/ep01_smoke.yaml
 PYTHONPATH=src python3 -m scw_builder.cli build episodes/ep01_smoke.yaml --offline
 ```
+
+Autoresearch planner benchmark:
+
+```bash
+cd warcut
+PYTHONPATH=src python3 -m scw_builder.cli benchmark-planner
+PYTHONPATH=src python3 -m scw_builder.cli benchmark-planner --json
+```
+
+The benchmark uses:
+
+- `episodes/autoresearch_planner.yaml`
+- `src/scw_builder/benchmark.py`
+- `src/scw_builder/plan/planner.py`
+
+If you want a ready-made Autoresearch prompt surface, start from `program.md`.
 
 ## Repo Map
 

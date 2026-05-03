@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Warcut Theatre - Barcelona Checkpoint</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="stage-wrap" aria-label="Barcelona theatre scene">
+        <canvas id="stage" width="1280" height="720"></canvas>
+        <div class="curtain" aria-hidden="true"></div>
+      </section>
+
+      <aside class="panel" aria-label="Scene controls">
+        <div class="kicker">Warcut Theatre</div>
+        <h1>Barcelona Checkpoint</h1>
+        <p class="deck">
+          A small staged reenactment for episode one: official authority meets
+          workers' militia, then the street quietly changes hands.
+        </p>
+
+        <div class="controls" role="group" aria-label="Playback controls">
+          <button id="play" type="button">Pause</button>
+          <button id="restart" type="button">Restart</button>
+          <button id="record" type="button">Record</button>
+        </div>
+
+        <label class="slider">
+          <span>Timeline</span>
+          <input id="scrub" type="range" min="0" max="48" step="0.01" value="0" />
+        </label>
+
+        <div class="readout">
+          <span id="time">00:00</span>
+          <span id="shot">opening wide</span>
+        </div>
+
+        <div class="beat-list" id="beat-list"></div>
+        <a id="download" class="download" hidden>Download capture</a>
+      </aside>
+    </main>
+
+    <script type="module" src="./scene.js"></script>
+  </body>
+</html>

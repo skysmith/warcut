@@ -5,22 +5,27 @@
   "media_type": "video",
   "mime_type": "video/mp4",
   "source_url": "https://archive.org/details/61114-yesterdays-newsreel-the-spanish-civil-war-vwr",
-  "source_local_filepath": "build/ep01/assets/ia_clips/door_slam_multiple_authorities_61114-yesterdays-newsreel-the-spanish-civil-war-vwr_8dd9f95409.mp4",
+  "source_local_filepath": "build/library_newsreels/assets/ia_clips/retrospective_collections_61114-yesterdays-newsreel-the-spanish-civil-war-vwr_ac5486bb70.mp4",
   "curated_filepath": "files/internet_archive-61114-yesterdays-newsreel-the-spanish-civil-war-vwr.mp4",
   "preview_url": "https://archive.org/download/61114-yesterdays-newsreel-the-spanish-civil-war-vwr/61114 Yesterdays Newsreel The Spanish Civil War_vwr.mov",
   "page_title": null,
   "identifier": "61114-yesterdays-newsreel-the-spanish-civil-war-vwr",
-  "raw_metadata_path": "build/ep01/assets/ia_clips/door_slam_multiple_authorities_61114-yesterdays-newsreel-the-spanish-civil-war-vwr_8dd9f95409.mp4.json",
+  "raw_metadata_path": "build/library_newsreels/assets/ia_clips/retrospective_collections_61114-yesterdays-newsreel-the-spanish-civil-war-vwr_ac5486bb70.mp4.json",
   "episode_ids": [
-    "ep01"
+    "ep01",
+    "library_newsreels"
   ],
   "beat_ids": [
     "coup_as_accelerant",
-    "door_slam_multiple_authorities"
+    "door_slam_multiple_authorities",
+    "reels_overview",
+    "retrospective_collections"
   ],
   "captions": [
     "JULY 1936",
-    "THE STATE SHATTERS"
+    "THE STATE SHATTERS",
+    "REELS OVERVIEW",
+    "RETROSPECTIVE COLLECTIONS"
   ],
   "tags": {
     "region": [],

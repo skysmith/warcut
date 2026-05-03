@@ -6,6 +6,7 @@ import shutil
 import tempfile
 from pathlib import Path
 
+from scw_builder.benchmark import print_planner_benchmark
 from scw_builder.config import BuildPaths, repo_root_from_episode
 from scw_builder.config import curated_assets_root
 from scw_builder.edit.otio_builder import write_otio_json
@@ -15,8 +16,17 @@ from scw_builder.library import ingest_manifest, write_gallery
 from scw_builder.manifest import read_manifest, write_manifest
 from scw_builder.plan.planner import _beat_requires_sourced_assets, plan_episode
 from scw_builder.render.animatic import build_animatic
+from scw_builder.render.final_video import mux_narration
 from scw_builder.render.slides import render_slides
 from scw_builder.sources.licenses import attribution_lines
+from scw_builder.tts_openai import (
+    DEFAULT_TTS_FORMAT,
+    DEFAULT_TTS_INSTRUCTIONS,
+    DEFAULT_TTS_MODEL,
+    DEFAULT_TTS_VOICE,
+    synthesize_episode_narration,
+    update_manifest_narration,
+)
 from scw_builder.utils.files import ensure_dir
 from scw_builder.utils.log import info
 from scw_builder.voice_cues import (
@@ -50,8 +60,33 @@ def main() -> None:
     voice_parser.add_argument("episode_path")
     voice_parser.add_argument("voice_path")
 
+    tts_parser = subparsers.add_parser("tts-openai")
+    tts_parser.add_argument("episode_path")
+    tts_parser.add_argument("--env-file", type=Path)
+    tts_parser.add_argument("--model", default=DEFAULT_TTS_MODEL)
+    tts_parser.add_argument("--voice", default=DEFAULT_TTS_VOICE)
+    tts_parser.add_argument(
+        "--format",
+        default=DEFAULT_TTS_FORMAT,
+        choices=["mp3", "opus", "aac", "flac", "wav", "pcm"],
+    )
+    tts_parser.add_argument("--instructions", default=DEFAULT_TTS_INSTRUCTIONS)
+    tts_parser.add_argument("--output", type=Path)
+    tts_parser.add_argument("--dry-run", action="store_true")
+    tts_parser.add_argument("--no-manifest-update", action="store_true")
+
+    final_parser = subparsers.add_parser("render-final")
+    final_parser.add_argument("episode_path")
+    final_parser.add_argument("--narration", type=Path)
+    final_parser.add_argument("--output", type=Path)
+    final_parser.add_argument("--fit-narration", action="store_true")
+
     publish_parser = subparsers.add_parser("publish")
     publish_parser.add_argument("episode_path")
+
+    benchmark_parser = subparsers.add_parser("benchmark-planner")
+    benchmark_parser.add_argument("--json", action="store_true")
+    benchmark_parser.add_argument("--episode", default=None)
 
     args = parser.parse_args()
     if args.command == "init":
@@ -69,8 +104,29 @@ def main() -> None:
         _cmd_ingest(Path(args.episode_path))
     elif args.command == "voice":
         _cmd_voice(Path(args.episode_path), Path(args.voice_path))
+    elif args.command == "tts-openai":
+        _cmd_tts_openai(
+            Path(args.episode_path),
+            env_file=args.env_file,
+            model=args.model,
+            voice=args.voice,
+            audio_format=args.format,
+            instructions=args.instructions,
+            output=args.output,
+            dry_run=args.dry_run,
+            update_manifest=not args.no_manifest_update,
+        )
+    elif args.command == "render-final":
+        _cmd_render_final(
+            Path(args.episode_path),
+            narration_path=args.narration,
+            output_path=args.output,
+            fit_narration=args.fit_narration,
+        )
     elif args.command == "publish":
         _cmd_publish(Path(args.episode_path))
+    elif args.command == "benchmark-planner":
+        _cmd_benchmark_planner(json_output=args.json, episode_path=args.episode)
 
 
 def _cmd_init(root: Path) -> None:
@@ -186,6 +242,66 @@ def _cmd_voice(episode_path: Path, voice_path: Path) -> None:
     info(f"updated narration path in {paths.manifest_path}")
 
 
+def _cmd_tts_openai(
+    episode_path: Path,
+    *,
+    env_file: Path | None,
+    model: str,
+    voice: str,
+    audio_format: str,
+    instructions: str,
+    output: Path | None,
+    dry_run: bool,
+    update_manifest: bool,
+) -> None:
+    narration_path = synthesize_episode_narration(
+        episode_path,
+        model=model,
+        voice=voice,
+        audio_format=audio_format,
+        instructions=instructions,
+        env_file=env_file,
+        output_path=output,
+        dry_run=dry_run,
+    )
+    info(f"narration: {narration_path}")
+    if update_manifest and not dry_run:
+        manifest_path = update_manifest_narration(episode_path, narration_path)
+        info(f"updated narration path in {manifest_path}")
+    elif dry_run:
+        info("manifest: unchanged (dry run)")
+
+
+def _cmd_render_final(
+    episode_path: Path,
+    *,
+    narration_path: Path | None,
+    output_path: Path | None,
+    fit_narration: bool,
+) -> None:
+    episode = load_episode(episode_path)
+    root = repo_root_from_episode(episode_path)
+    paths = BuildPaths(root=root, episode_id=episode.id)
+    manifest = read_manifest(paths.manifest_path)
+    resolved_narration = narration_path or (
+        Path(manifest.narration_wav) if manifest.narration_wav else None
+    )
+    if resolved_narration is None:
+        raise FileNotFoundError(
+            "narration path not set. Run `scw tts-openai ...` or pass --narration."
+        )
+    resolved_output = output_path or (
+        paths.build_dir / "publish" / f"{episode.id}-first-video.mp4"
+    )
+    final_path = mux_narration(
+        animatic_path=paths.animatic_path,
+        narration_path=resolved_narration,
+        output_path=resolved_output,
+        fit_narration=fit_narration,
+    )
+    info(f"final video: {final_path}")
+
+
 def _cmd_publish(episode_path: Path) -> None:
     episode = load_episode(episode_path)
     root = repo_root_from_episode(episode_path)
@@ -200,6 +316,15 @@ def _cmd_publish(episode_path: Path) -> None:
     if paths.animatic_path.exists():
         shutil.copy2(paths.animatic_path, publish_dir / paths.animatic_path.name)
     info(f"publish package: {publish_dir}")
+
+
+def _cmd_benchmark_planner(
+    *,
+    json_output: bool = False,
+    episode_path: str | None = None,
+) -> None:
+    resolved_episode = Path(episode_path) if episode_path else None
+    print_planner_benchmark(json_output=json_output, episode_path=resolved_episode)
 
 
 def _write_credits(manifest, credits_path: Path) -> None:

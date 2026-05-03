@@ -1,0 +1,56 @@
+{
+  "asset_key": "internet_archive-1936-09-09-terrified-civilians-flee-air-raid",
+  "title": "Terrified Civilians Flee Air Raid,  1936/09/09",
+  "provider": "internet_archive",
+  "media_type": "video",
+  "mime_type": "video/mp4",
+  "source_url": "https://archive.org/details/1936-09-09_Terrified_Civilians_Flee_Air_Raid",
+  "source_local_filepath": "build/library_newsreels/assets/ia_clips/guernica_and_basque_1936-09-09_Terrified_Civilians_Flee_Air_Raid_949b77876d.mp4",
+  "curated_filepath": "files/internet_archive-1936-09-09-terrified-civilians-flee-air-raid.mp4",
+  "preview_url": "https://archive.org/download/1936-09-09_Terrified_Civilians_Flee_Air_Raid/1936-09-09_Terrified_Civilians_Flee_Air_Raid.mp4",
+  "page_title": null,
+  "identifier": "1936-09-09_Terrified_Civilians_Flee_Air_Raid",
+  "raw_metadata_path": "build/library_newsreels/assets/ia_clips/guernica_and_basque_1936-09-09_Terrified_Civilians_Flee_Air_Raid_949b77876d.mp4.json",
+  "episode_ids": [
+    "library_newsreels"
+  ],
+  "beat_ids": [
+    "guernica_and_basque"
+  ],
+  "captions": [
+    "GUERNICA AND BASQUE"
+  ],
+  "tags": {
+    "region": [
+      "basque_country"
+    ],
+    "theme": [
+      "newsreel"
+    ],
+    "asset_type": [
+      "archival_clip",
+      "clip"
+    ],
+    "period": [
+      "1936"
+    ],
+    "mood": [
+      "violence"
+    ],
+    "quality": "strong"
+  },
+  "notes": [],
+  "attribution": {
+    "title": "Terrified Civilians Flee Air Raid,  1936/09/09",
+    "author": null,
+    "creator": null,
+    "date": "1936",
+    "identifier": "1936-09-09_Terrified_Civilians_Flee_Air_Raid",
+    "license_name": "See rights statement",
+    "license_url": "http://creativecommons.org/licenses/publicdomain/",
+    "rights_statement": null,
+    "source_url": "https://archive.org/details/1936-09-09_Terrified_Civilians_Flee_Air_Raid",
+    "attribution_text": "http://creativecommons.org/licenses/publicdomain/",
+    "attribution_html": null
+  }
+}

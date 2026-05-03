@@ -1,0 +1,89 @@
+id: autoresearch_planner
+title: "warcut planner benchmark"
+duration_target_sec: 190
+
+voice:
+  mode: voice_only
+  narration_wav: null
+
+style:
+  theme: "noir_doc"
+  aspect: "16:9"
+  fps: 30
+  font_family: "Inter"
+  safe_margin_px: 80
+  accent_color: "burnt_red"
+
+sources:
+  enable_commons: true
+  enable_internet_archive: true
+  commons:
+    max_assets_per_beat: 2
+    min_resolution_px: 600
+  internet_archive:
+    max_assets_per_beat: 1
+    max_clip_sec: 8
+
+guardrails:
+  require_license_metadata: true
+  block_ai_generated_archival: true
+  require_source_urls_in_credits: true
+
+beats:
+  - id: cold_open
+    type: montage
+    duration_sec: 25
+    keywords:
+      - "Barcelona 1936 militia"
+      - "Spain civil war 1936 street scene"
+    on_screen_text:
+      - "the street is already political"
+    caption: "BARCELONA · JUL 1936"
+
+  - id: union_posters
+    type: still
+    duration_sec: 40
+    keywords:
+      - "CNT Barcelona"
+      - "FAI propaganda Barcelona"
+    on_screen_text:
+      - "posters tell you who is organizing"
+    caption: "CATALONIA · WALLS"
+
+  - id: election_press
+    type: doc_scan
+    duration_sec: 40
+    keywords:
+      - "Spanish election press Barcelona"
+    on_screen_text:
+      - "print culture makes the crisis legible"
+    caption: "PRESS + BALLOTS"
+
+  - id: archival_reel
+    type: archival_clip
+    duration_sec: 35
+    keywords:
+      - "Madrid 1936 crowds"
+    on_screen_text:
+      - "public footage turns tension into memory"
+    caption: "ARCHIVE REEL"
+
+  - id: map_move
+    type: map_move
+    duration_sec: 50
+    keywords:
+      - "Spain regional map"
+    on_screen_text:
+      - "regions first"
+      - "politics second"
+    caption: "SPAIN · REGIONS"
+    map:
+      base: "assets_static/brand/map_base.svg"
+    highlights:
+      - "catalonia"
+      - "basque_country"
+    labels:
+      - at: "barcelona"
+        text: "barcelona"
+      - at: "madrid"
+        text: "madrid"

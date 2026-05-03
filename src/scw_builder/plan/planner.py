@@ -67,15 +67,18 @@ def plan_episode(
             beat.id,
             beat.pinned.get("local_files", []),
         )
-        commons_assets, sourcing_notes = _collect_commons_assets(
-            beat.id,
-            _provider_queries(beat.keywords, beat.search, "commons"),
-            commons_options,
-            beat_type=beat.type,
-            warm_cache=warm_cache,
-            pinned_titles=beat.pinned.get("commons_titles", []),
-        )
-        sourcing_notes = local_notes + sourcing_notes
+        sourcing_notes = list(local_notes)
+        commons_assets = []
+        if _should_collect_commons_assets(beat.type, beat.search, beat.pinned):
+            commons_assets, commons_notes = _collect_commons_assets(
+                beat.id,
+                _provider_queries(beat.keywords, beat.search, "commons"),
+                commons_options,
+                beat_type=beat.type,
+                warm_cache=warm_cache,
+                pinned_titles=beat.pinned.get("commons_titles", []),
+            )
+            sourcing_notes.extend(commons_notes)
         ia_assets = []
         ia_notes: list[str] = []
         if beat.type in {"archival_clip", "montage"} and episode.sources.enable_internet_archive:
@@ -267,6 +270,20 @@ def _default_montage() -> dict:
 
 def _beat_requires_sourced_assets(beat_type: str) -> bool:
     return beat_type not in {"map", "map_move", "quote_card"}
+
+
+def _should_collect_commons_assets(
+    beat_type: str,
+    search: dict[str, list[str]],
+    pinned: dict[str, list[str]],
+) -> bool:
+    if _beat_requires_sourced_assets(beat_type):
+        return True
+    if pinned.get("commons_titles") or pinned.get("local_files"):
+        return True
+    if search.get("commons"):
+        return True
+    return False
 
 
 def _collect_ia_assets(

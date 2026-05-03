@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 import random
+import shutil
+import subprocess
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont, ImageOps
@@ -100,6 +102,10 @@ def _render_doc_scan(manifest, beat, size, index) -> Image.Image:
 
 
 def _render_archival_clip(manifest, beat, size, index) -> Image.Image:
+    video_frame = _video_asset_frame(manifest, beat, size)
+    if video_frame:
+        return video_frame
+
     canvas = Image.new("RGB", size, color="#090909")
     draw = ImageDraw.Draw(canvas)
     frame_box = [150, 110, size[0] - 150, size[1] - 190]
@@ -112,6 +118,48 @@ def _render_archival_clip(manifest, beat, size, index) -> Image.Image:
         draw.rectangle([x, frame_box[1] - 18, x + 36, frame_box[1] + 2], fill=THEME_COLORS["text"])
         draw.rectangle([x, frame_box[3] - 2, x + 36, frame_box[3] + 18], fill=THEME_COLORS["text"])
     return canvas
+
+
+def _video_asset_frame(manifest, beat, size) -> Image.Image | None:
+    ffmpeg = shutil.which("ffmpeg")
+    if not ffmpeg:
+        return None
+    video_assets = [
+        asset
+        for asset in beat.assets
+        if asset.media_type == "video" and Path(asset.local_filepath).exists()
+    ]
+    if not video_assets:
+        return None
+
+    asset = video_assets[0]
+    clip_duration = asset.clip_duration_sec or beat.duration_sec or 10
+    seek_sec = max(0.5, min(float(clip_duration) * 0.58, float(clip_duration) - 0.4))
+    frame_dir = Path(manifest.build_dir) / "assets" / "_frames"
+    frame_dir.mkdir(parents=True, exist_ok=True)
+    frame_path = frame_dir / f"{asset.asset_id}-{seek_sec:.1f}.png"
+
+    if not frame_path.exists():
+        subprocess.run(
+            [
+                ffmpeg,
+                "-hide_banner",
+                "-loglevel",
+                "error",
+                "-y",
+                "-ss",
+                f"{seek_sec:.2f}",
+                "-i",
+                asset.local_filepath,
+                "-frames:v",
+                "1",
+                str(frame_path),
+            ],
+            check=True,
+            timeout=30,
+        )
+    with Image.open(frame_path) as source:
+        return ImageOps.fit(source.convert("RGB"), size, method=Image.Resampling.LANCZOS)
 
 
 def _render_map_move(manifest, beat, size, templates) -> Image.Image:

@@ -255,3 +255,17 @@ def test_archival_clip_prefers_ia_suggested_queries(tmp_path):
         allow_partial=True,
     )
     assert any("prelinger" in query or "newsreel" in query for query in manifest.beats[0].suggested_queries)
+
+
+def test_map_move_skips_commons_search_without_source_overrides(tmp_path):
+    episode = load_episode("episodes/ep01_smoke.yaml")
+    episode.beats = [beat for beat in episode.beats if beat.id == "map_move"]
+    manifest = plan_episode(
+        episode,
+        tmp_path / "build" / "ep01",
+        offline=True,
+        no_download=True,
+        allow_partial=True,
+    )
+    assert manifest.beats[0].assets == []
+    assert manifest.beats[0].sourcing_notes == []
